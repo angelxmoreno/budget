@@ -48,24 +48,6 @@ Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->fallbacks('DashedRoute');
 });
 Router::scope('/', function (RouteBuilder $routes) {
-    $routes->connect(
-        '/login',
-        ['controller' => 'Auth', 'action' => 'login'],
-        ['_name' => 'auth:login']
-    )->setMethods(['GET', 'POST']);
-
-    $routes->connect(
-        '/logout',
-        ['controller' => 'Auth', 'action' => 'lgout'],
-        ['_name' => 'auth:logout']
-    )->setMethods(['GET']);
-
-    $routes->connect(
-        '/register',
-        ['controller' => 'Auth', 'action' => 'register'],
-        ['_name' => 'auth:register']
-    )->setMethods(['GET', 'POST']);
-
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file

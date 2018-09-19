@@ -1,0 +1,52 @@
+# Docker specific files #
+##########################
+docker/data/es/*
+!docker/data/es/empty
+docker/data/mysql/*
+!docker/data/mysql/empty
+docker/data/redis/*
+!docker/data/redis/empty
+
+# CakePHP specific files #
+##########################
+config/.env
+/logs/*
+!/logs/empty
+/tmp/*
+!/tmp/empty
+/vendor/*
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Tool specific files #
+#######################
+# vim
+*~
+*.swp
+*.swo
+# sublime text & textmate
+*.sublime-*
+*.stTheme.cache
+*.tmlanguage.cache
+*.tmPreferences.cache
+# Eclipse
+.settings/*
+# JetBrains, aka PHPStorm, IntelliJ IDEA
+.idea/*
+# NetBeans
+nbproject/*
+# Visual Studio Code
+.vscode
+# Sass preprocessor
+.sass-cache/
+webroot/vendor/
+node_modules/

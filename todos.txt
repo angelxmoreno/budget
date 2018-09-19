@@ -1,0 +1,35 @@
+# Todo
+- add elastic search
+- add schema for Doba Orders
+- shipping module
+- payment providers
+    - create accounts
+    - setup omnipay or alternative
+    - providers
+        - stripe
+        - paypal
+        - amazon payments
+        - braintree
+- sales portal item comparison
+    - price comparison sites
+        - https://www.marketingdonut.co.uk/market-research/market-analysis/a-guide-to-price-comparison-websites
+        - http://www.pricewatch.com/
+        - https://www.makeuseof.com/tag/7-price-comparison-websites-you-should-bookmark-right-now/
+        - https://www.shopify.com/blog/7068398-10-best-comparison-shopping-engines-to-increase-ecommerce-sales
+    - lists of portals
+        - https://www.wheretosellonline.com/marketplace-comparisons/compare-marketplace-traffic/
+        - https://www.businessknowhow.com/marketing/where-to-sell.htm
+        - http://www.velsof.com/blog/ecommerce/the-8-best-online-marketplaces-to-sell-in-2018
+        - https://www.practicalecommerce.com/ecommerce-marketplaces-worldwide
+    - portals
+        - ebay
+        - amazon
+        - etsy
+        - newegg
+        - Bonanza
+        - Craigslist
+        - eBid
+# Active
+# Done
+- db schema
+

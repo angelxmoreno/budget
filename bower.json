@@ -1,0 +1,27 @@
+{
+  "name": "budget",
+  "description": "A spending analyzer",
+  "main": "index.js",
+  "authors": [
+    "Angel S. Moreno <angelxmoreno@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "webroot/vendor/",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "bootstrap": "3"
+  },
+  "dependencies": {
+    "bootstrap": "3",
+    "jquery": "^3.3.1",
+    "fontawesome": "^5.2.0"
+  }
+}

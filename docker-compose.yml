@@ -1,0 +1,51 @@
+version: '2'
+services:
+  fpm:
+    container_name: budget-fpm
+    image: angelxmoreno/docker-php7-fpm-alpine-dev
+    volumes:
+    - '.:/var/www/html'
+    - './docker/php.ini:/usr/local/etc/php/php.ini:ro'
+    links:
+    - mysql
+    - redis
+    - es
+  web:
+    container_name: budget-nginx
+    image: 'nginx:1.13-alpine'
+    links:
+    - fpm
+    ports:
+    - '8711:80'
+    volumes:
+    - './docker/site.conf:/etc/nginx/conf.d/_site.conf:ro'
+    volumes_from:
+    - fpm
+  mysql:
+    container_name: budget-mysql
+    image: 'mariadb:10.1'
+    environment:
+    - MYSQL_ROOT_PASSWORD=budget
+    - MYSQL_USER=budget
+    - MYSQL_PASSWORD=budget
+    - MYSQL_DATABASE=budget
+    volumes:
+    - './docker/data/mysql/:/var/lib/mysql'
+    ports:
+    - '8712:3306'
+  redis:
+    container_name: budget-redis
+    image: 'redis:4.0-alpine'
+    ports:
+    - '8713:6379'
+    command: 'redis-server --appendonly yes'
+    volumes:
+    - './docker/data/redis/:/data'
+  es:
+    container_name: budget-es
+    image: 'elasticsearch:5-alpine'
+    ports:
+    - '8714:9200'
+    - '8715:9300'
+    volumes:
+    - './docker/data/es/:/usr/share/elasticsearch/data'

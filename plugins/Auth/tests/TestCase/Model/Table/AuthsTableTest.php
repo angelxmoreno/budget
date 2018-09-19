@@ -1,4 +1,5 @@
 <?php
+
 namespace Auth\Test\TestCase\Model\Table;
 
 use Auth\Model\Table\AuthsTable;

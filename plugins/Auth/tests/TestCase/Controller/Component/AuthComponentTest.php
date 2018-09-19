@@ -1,4 +1,5 @@
 <?php
+
 namespace Auth\Test\TestCase\Controller\Component;
 
 use Auth\Controller\Component\AuthComponent;

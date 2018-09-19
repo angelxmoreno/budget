@@ -42,6 +42,15 @@ class AuthController extends AppController
         }
     }
 
+    protected function redirectIfLoggedIn()
+    {
+        if ($this->Auth->user()) {
+            $this->Flash->info(__('You are already logged in.'));
+            $default_redirect_target = $this->Auth->redirectUrl();
+            $current_referer = $this->referer($default_redirect_target, true);
+            $this->redirect($current_referer);
+        }
+    }
 
     /**
      * Register method
@@ -77,15 +86,5 @@ class AuthController extends AppController
         $this->Flash->success(__('You are now logged out.'));
 
         return $this->redirect($this->Auth->logout());
-    }
-
-    protected function redirectIfLoggedIn()
-    {
-        if ($this->Auth->user()) {
-            $this->Flash->info(__('You are already logged in.'));
-            $default_redirect_target = $this->Auth->redirectUrl();
-            $current_referer = $this->referer($default_redirect_target, true);
-            $this->redirect($current_referer);
-        }
     }
 }

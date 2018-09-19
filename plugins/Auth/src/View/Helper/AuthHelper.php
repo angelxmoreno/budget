@@ -20,6 +20,22 @@ class AuthHelper extends Helper
     }
 
     /**
+     * @return array
+     */
+    protected function getAuthArray() : array
+    {
+        return $this->getSession()->read('Auth.User');
+    }
+
+    /**
+     * @return \Cake\Http\Session
+     */
+    protected function getSession()
+    {
+        return $this->request->getSession();
+    }
+
+    /**
      * @param string|null $key
      * @return mixed
      */
@@ -35,21 +51,5 @@ class AuthHelper extends Helper
         }
 
         return Hash::get($user, $key);
-    }
-
-    /**
-     * @return array
-     */
-    protected function getAuthArray() : array
-    {
-        return $this->getSession()->read('Auth.User');
-    }
-
-    /**
-     * @return \Cake\Http\Session
-     */
-    protected function getSession()
-    {
-        return $this->request->getSession();
     }
 }

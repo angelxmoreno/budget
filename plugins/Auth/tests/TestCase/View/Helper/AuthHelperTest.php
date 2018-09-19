@@ -1,4 +1,5 @@
 <?php
+
 namespace Auth\Test\TestCase\View\Helper;
 
 use Auth\View\Helper\AuthHelper;

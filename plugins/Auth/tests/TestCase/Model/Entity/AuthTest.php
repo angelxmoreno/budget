@@ -1,4 +1,5 @@
 <?php
+
 namespace Auth\Test\TestCase\Model\Entity;
 
 use Auth\Model\Entity\Auth;

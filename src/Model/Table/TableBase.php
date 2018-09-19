@@ -57,7 +57,5 @@ abstract class TableBase extends Table
     public function findRandom(Query $query)
     {
         return $query->order(['RAND()']);
-
     }
-
 }

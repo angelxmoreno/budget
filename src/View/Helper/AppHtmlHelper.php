@@ -20,8 +20,7 @@ class AppHtmlHelper extends HtmlHelper
         $li_options = [];
         $target = $this->Url->build($url, $options);
         $current = $this->request->getAttribute('here');
-        if (
-            (strpos($current, $target) === 0 && $target !== '/') ||
+        if ((strpos($current, $target) === 0 && $target !== '/') ||
             ($current === $target && $target === '/')
         ) {
             $li_options['class'] = 'active';

@@ -60,6 +60,4 @@ class AppView extends UIView
             $this->loadHelper('Breadcrumbs', ['className' => 'BootstrapUI.Breadcrumbs']);
         }
     }
-
-
 }

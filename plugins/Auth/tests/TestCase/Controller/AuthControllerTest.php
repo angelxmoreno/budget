@@ -1,7 +1,7 @@
 <?php
+
 namespace Auth\Test\TestCase\Controller;
 
-use Auth\Controller\AuthController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**

@@ -38,13 +38,15 @@
     "autoload": {
         "psr-4": {
             "Axm\\Budget\\": "src/",
-            "TestData\\": "./plugins/TestData/src/"
+            "TestData\\": "./plugins/TestData/src/",
+            "Auth\\": "./plugins/Auth/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Axm\\Budget\\Test\\": "tests/",
-            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
+            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/",
+            "Auth\\Test\\": "./plugins/Auth/tests/"
         }
     },
     "scripts": {
@@ -54,8 +56,7 @@
         ],
         "post-create-project-cmd": "Axm\\Budget\\Console\\Installer::postInstall",
         "post-autoload-dump": [
-            "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump",
-            "yarn --colors"
+            "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
         ],
         "check": [
             "@test",

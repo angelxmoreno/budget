@@ -1,21 +1,32 @@
 <?php
-namespace Axm\Budget\Controller;
 
-use Axm\Budget\Model\Table\UsersTable;
+namespace Auth\Controller;
+
+use Auth\Model\Table\AuthsTable;
 
 /**
  * Auth Controller
  *
- * @property UsersTable $Users
+ * @property AuthsTable $Auths
  */
 class AuthController extends AppController
 {
+    public $modelClass = null;
+
     public function initialize()
     {
         parent::initialize();
-        $this->loadModel('Users');
+
+        $this->loadModel('Auth.Auths');
+
+        $this->Auth->allow(['register', 'login']);
     }
 
+    /**
+     * Login method
+     *
+     * @return \Cake\Http\Response|null
+     */
     public function login()
     {
         $this->redirectIfLoggedIn();
@@ -31,24 +42,39 @@ class AuthController extends AppController
         }
     }
 
+
+    /**
+     * Register method
+     *
+     * @return \Cake\Http\Response|null
+     */
     public function register()
     {
         $this->redirectIfLoggedIn();
-        $user = $this->Users->newEntity();
+        $user = $this->Auths->newEntity([
+            'is_admin' => false,
+            'is_active' => true
+        ]);
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
+            $user = $this->Auths->patchEntity($user, $this->request->getData());
+            if ($this->Auths->save($user)) {
                 $this->Flash->success(__('Registration Successful'));
 
                 return $this->redirect(['action' => 'login']);
             }
+            dd($user, $user->getErrors(), $this->request->getData());
             $this->Flash->error(__('Can not register. Please, try again.'));
         }
     }
 
+    /**
+     * Logout method
+     *
+     * @return \Cake\Http\Response
+     */
     public function logout()
     {
-        $this->Flash->success('You are now logged out.');
+        $this->Flash->success(__('You are now logged out.'));
 
         return $this->redirect($this->Auth->logout());
     }

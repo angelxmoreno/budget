@@ -15,7 +15,6 @@
 
 namespace Axm\Budget\Controller;
 
-use Axm\Budget\Controller\Component\GuestUserComponent;
 use Axm\Budget\Model\Entity\User;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
@@ -28,7 +27,6 @@ use Cake\ORM\TableRegistry;
  *
  * @link https://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  *
- * @property GuestUserComponent $GuestUser
  */
 class AppController extends Controller
 {
@@ -59,7 +57,7 @@ class AppController extends Controller
          */
         $this->loadComponent('Security');
         $this->loadComponent('Flash');
-        $this->loadComponent('GuestUser');
+        $this->loadComponent('Auth.Auth');
     }
 
     /**

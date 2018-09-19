@@ -1,5 +1,6 @@
 <?php
-namespace Axm\Budget\View\Helper;
+
+namespace Auth\View\Helper;
 
 use Cake\Utility\Hash;
 use Cake\View\Helper;
@@ -11,18 +12,18 @@ class AuthHelper extends Helper
 {
 
     /**
-     * Default configuration.
-     *
-     * @var array
+     * @return bool
      */
-    protected $_defaultConfig = [];
-
-    public function isLoggedIn()
+    public function isLoggedIn() : bool
     {
         return !!$this->getAuthArray();
     }
 
-    public function user($key = null)
+    /**
+     * @param string|null $key
+     * @return mixed
+     */
+    public function user(string $key = null)
     {
         $user = $this->getAuthArray();
         if (!$user) {
@@ -36,10 +37,17 @@ class AuthHelper extends Helper
         return Hash::get($user, $key);
     }
 
-    protected function getAuthArray()
+    /**
+     * @return array
+     */
+    protected function getAuthArray() : array
     {
         return $this->getSession()->read('Auth.User');
     }
+
+    /**
+     * @return \Cake\Http\Session
+     */
     protected function getSession()
     {
         return $this->request->getSession();

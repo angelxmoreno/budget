@@ -367,16 +367,5 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
-    ],
-    'Jwt' => [
-        'secret' => env('JWT_SECRET', ''),
-        'algo' => env('JWT_ALGO', 'HS256'),
-    ],
-    \DobaCli\Plugin::PLUGIN_NAME => [
-        'user' => env('DOBA_API_user', 'mikeb'),
-        'password' => env('DOBA_API_password', 'password'),
-        'retailer_id' => env('DOBA_API_retailer_id', '1765191'),
-        'cache_url' => env('DOBA_API_CACHE_URL'),
-        'dev_mode' => env('DOBA_API_DEV_MODE'),
     ]
 ];

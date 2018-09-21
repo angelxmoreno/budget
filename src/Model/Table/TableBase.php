@@ -16,9 +16,6 @@ abstract class TableBase extends Table
     {
         parent::initialize($config);
         $this->addBehavior('Timestamp');
-//        $this->addBehavior('Muffin/Trash.Trash', [
-//            'field' => 'deleted'
-//        ]);
     }
 
     /**

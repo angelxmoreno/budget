@@ -24,6 +24,7 @@ class AccountsController extends AppController
     public function index()
     {
         $this->paginate = [
+            'conditions' => ['Accounts.user_id' => $this->Auth->user('id')],
             'contain' => ['Banks', 'Users']
         ];
         $accounts = $this->paginate($this->Accounts);
@@ -40,6 +41,7 @@ class AccountsController extends AppController
     public function view($id = null)
     {
         $account = $this->Accounts->get($id, [
+            'conditions' => ['Accounts.user_id' => $this->Auth->user('id')],
             'contain' => ['Banks', 'Users', 'Transactions']
         ]);
 
@@ -55,6 +57,7 @@ class AccountsController extends AppController
         $account = $this->Accounts->newEntity();
         if ($this->request->is('post')) {
             $account = $this->Accounts->patchEntity($account, $this->request->getData());
+            $account->user_id = $this->Auth->user('id');
             if ($this->Accounts->save($account)) {
                 $this->Flash->success(__('The account has been saved.'));
 
@@ -63,7 +66,6 @@ class AccountsController extends AppController
             $this->Flash->error(__('The account could not be saved. Please, try again.'));
         }
         $banks = $this->Accounts->Banks->find('list', ['limit' => 200]);
-        $users = $this->Accounts->Users->find('list', ['limit' => 200]);
         $this->set(compact('account', 'banks', 'users'));
     }
 
@@ -76,10 +78,12 @@ class AccountsController extends AppController
     public function edit($id = null)
     {
         $account = $this->Accounts->get($id, [
+            'conditions' => ['Accounts.user_id' => $this->Auth->user('id')],
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $account = $this->Accounts->patchEntity($account, $this->request->getData());
+            $account->user_id = $this->Auth->user('id');
             if ($this->Accounts->save($account)) {
                 $this->Flash->success(__('The account has been saved.'));
 
@@ -88,8 +92,7 @@ class AccountsController extends AppController
             $this->Flash->error(__('The account could not be saved. Please, try again.'));
         }
         $banks = $this->Accounts->Banks->find('list', ['limit' => 200]);
-        $users = $this->Accounts->Users->find('list', ['limit' => 200]);
-        $this->set(compact('account', 'banks', 'users'));
+        $this->set(compact('account', 'banks'));
     }
 
     /**
@@ -101,7 +104,9 @@ class AccountsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $account = $this->Accounts->get($id);
+        $account = $this->Accounts->get($id, [
+            'conditions' => ['Accounts.user_id' => $this->Auth->user('id')],
+        ]);
         if ($this->Accounts->delete($account)) {
             $this->Flash->success(__('The account has been deleted.'));
         } else {

@@ -44,7 +44,6 @@ $this->end();
     <legend><?= __('Edit {0}', ['Account']) ?></legend>
     <?php
     echo $this->Form->control('bank_id', ['options' => $banks]);
-    echo $this->Form->control('user_id', ['options' => $users]);
     echo $this->Form->control('name');
     echo $this->Form->control('account_number');
     ?>

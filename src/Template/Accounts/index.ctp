@@ -21,7 +21,6 @@ $this->start('tb_sidebar');
     <tr>
         <th><?= $this->Paginator->sort('id'); ?></th>
         <th><?= $this->Paginator->sort('bank_id'); ?></th>
-        <th><?= $this->Paginator->sort('user_id'); ?></th>
         <th><?= $this->Paginator->sort('name'); ?></th>
         <th><?= $this->Paginator->sort('account_number'); ?></th>
         <th><?= $this->Paginator->sort('created'); ?></th>
@@ -36,10 +35,6 @@ $this->start('tb_sidebar');
             <td>
                 <?= $account->has('bank') ? $this->Html->link($account->bank->name,
                     ['controller' => 'Banks', 'action' => 'view', $account->bank->id]) : '' ?>
-            </td>
-            <td>
-                <?= $account->has('user') ? $this->Html->link($account->user->name,
-                    ['controller' => 'Users', 'action' => 'view', $account->user->id]) : '' ?>
             </td>
             <td><?= h($account->name) ?></td>
             <td><?= h($account->account_number) ?></td>

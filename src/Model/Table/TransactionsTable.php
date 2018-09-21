@@ -41,6 +41,9 @@ class TransactionsTable extends TableBase
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Muffin/Trash.Trash', [
+            'field' => 'deleted'
+        ]);
 
         $this->belongsTo('Accounts', [
             'foreignKey' => 'account_id',

@@ -11,7 +11,7 @@ namespace Axm\Budget\Model\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \Axm\Budget\Model\Entity\Transaction[] $transactions
+ * @property \Axm\Budget\Model\Entity\Account[] $accounts
  */
 class Bank extends EntityBase
 {
@@ -30,6 +30,6 @@ class Bank extends EntityBase
         'url' => true,
         'created' => true,
         'modified' => true,
-        'transactions' => true
+        'accounts' => true
     ];
 }

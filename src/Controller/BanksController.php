@@ -37,7 +37,7 @@ class BanksController extends AppController
     public function view($id = null)
     {
         $bank = $this->Banks->get($id, [
-            'contain' => ['Transactions']
+            'contain' => ['Accounts']
         ]);
 
         $this->set('bank', $bank);

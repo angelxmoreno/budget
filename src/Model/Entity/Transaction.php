@@ -6,7 +6,7 @@ namespace Axm\Budget\Model\Entity;
  * Transaction Entity
  *
  * @property string $id
- * @property int $bank_id
+ * @property int $account_id
  * @property int $user_id
  * @property float $amount
  * @property \Cake\I18n\FrozenTime $posted
@@ -16,7 +16,7 @@ namespace Axm\Budget\Model\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \Axm\Budget\Model\Entity\Bank $bank
+ * @property \Axm\Budget\Model\Entity\Account $account
  * @property \Axm\Budget\Model\Entity\User $user
  */
 class Transaction extends EntityBase

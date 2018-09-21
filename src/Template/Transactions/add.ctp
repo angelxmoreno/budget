@@ -10,10 +10,11 @@ $this->extend('/Base/dashboard');
 $this->start('tb_sidebar');
 ?>
 <?= $this->Html->link(__('List Transactions'), ['action' => 'index'], ['class' => 'list-group-item']) ?>
-<?= $this->Html->link(__('List Banks'), ['controller' => 'Banks', 'action' => 'index'],
+<?= $this->Html->link(__('List Accounts'), ['controller' => 'Accounts', 'action' => 'index'],
     ['class' => 'list-group-item']) ?>
 
-<?= $this->Html->link(__('New Bank'), ['controller' => 'Banks', 'action' => 'add'], ['class' => 'list-group-item']) ?>
+<?= $this->Html->link(__('New Account'), ['controller' => 'Accounts', 'action' => 'add'],
+    ['class' => 'list-group-item']) ?>
 
 <?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index'],
     ['class' => 'list-group-item']) ?>
@@ -27,7 +28,7 @@ $this->end();
 <fieldset>
     <legend><?= __('Add {0}', ['Transaction']) ?></legend>
     <?php
-    echo $this->Form->control('bank_id', ['options' => $banks]);
+    echo $this->Form->control('account_id', ['options' => $accounts]);
     echo $this->Form->control('user_id', ['options' => $users]);
     echo $this->Form->control('amount');
     echo $this->Form->control('posted');

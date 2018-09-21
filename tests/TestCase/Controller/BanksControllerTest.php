@@ -17,7 +17,7 @@ class BanksControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.banks',
-        'app.transactions'
+        'app.accounts'
     ];
 
     /**

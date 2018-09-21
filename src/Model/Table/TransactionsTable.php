@@ -2,14 +2,13 @@
 
 namespace Axm\Budget\Model\Table;
 
-use Axm\Budget\Model\Entity\Transaction;
 use Cake\ORM;
 use Cake\Validation\Validator;
 
 /**
  * Transactions Model
  *
- * @property \Axm\Budget\Model\Table\BanksTable|\Cake\ORM\Association\BelongsTo $Banks
+ * @property \Axm\Budget\Model\Table\AccountsTable|\Cake\ORM\Association\BelongsTo $Accounts
  * @property \Axm\Budget\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
  *
  * @method \Axm\Budget\Model\Entity\Transaction get($primaryKey, $options = [])
@@ -42,8 +41,8 @@ class TransactionsTable extends TableBase
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Banks', [
-            'foreignKey' => 'bank_id',
+        $this->belongsTo('Accounts', [
+            'foreignKey' => 'account_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Users', [
@@ -112,7 +111,7 @@ class TransactionsTable extends TableBase
      */
     public function buildRules(ORM\RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['bank_id'], 'Banks'));
+        $rules->add($rules->existsIn(['account_id'], 'Accounts'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;

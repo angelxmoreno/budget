@@ -24,7 +24,7 @@ class TransactionsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Banks', 'Users']
+            'contain' => ['Accounts', 'Users']
         ];
         $transactions = $this->paginate($this->Transactions);
 
@@ -40,7 +40,7 @@ class TransactionsController extends AppController
     public function view($id = null)
     {
         $transaction = $this->Transactions->get($id, [
-            'contain' => ['Banks', 'Users']
+            'contain' => ['Accounts', 'Users']
         ]);
 
         $this->set('transaction', $transaction);
@@ -62,9 +62,9 @@ class TransactionsController extends AppController
             }
             $this->Flash->error(__('The transaction could not be saved. Please, try again.'));
         }
-        $banks = $this->Transactions->Banks->find('list', ['limit' => 200]);
+        $accounts = $this->Transactions->Accounts->find('list', ['limit' => 200]);
         $users = $this->Transactions->Users->find('list', ['limit' => 200]);
-        $this->set(compact('transaction', 'banks', 'users'));
+        $this->set(compact('transaction', 'accounts', 'users'));
     }
 
     /**
@@ -87,9 +87,9 @@ class TransactionsController extends AppController
             }
             $this->Flash->error(__('The transaction could not be saved. Please, try again.'));
         }
-        $banks = $this->Transactions->Banks->find('list', ['limit' => 200]);
+        $accounts = $this->Transactions->Accounts->find('list', ['limit' => 200]);
         $users = $this->Transactions->Users->find('list', ['limit' => 200]);
-        $this->set(compact('transaction', 'banks', 'users'));
+        $this->set(compact('transaction', 'accounts', 'users'));
     }
 
     /**

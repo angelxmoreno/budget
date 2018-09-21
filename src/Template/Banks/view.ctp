@@ -20,12 +20,12 @@ $this->start('tb_actions');
     ['action' => 'add'],
     ['class' => 'list-group-item']
 ) ?>
-<?= $this->Html->link(__('List Transactions'),
-    ['controller' => 'Transactions', 'action' => 'index'],
+<?= $this->Html->link(__('List Accounts'),
+    ['controller' => 'Accounts', 'action' => 'index'],
     ['class' => 'list-group-item']
 ) ?>
-<?= $this->Html->link(__('New Transaction'),
-    ['controller' => 'Transactions', 'action' => 'add'],
+<?= $this->Html->link(__('New Account'),
+    ['controller' => 'Accounts', 'action' => 'add'],
     ['class' => 'list-group-item']
 ) ?>
 <?php
@@ -50,12 +50,12 @@ $this->start('tb_sidebar');
         ['action' => 'add'],
         ['class' => 'list-group-item']
     ) ?>
-    <?= $this->Html->link(__('List Transactions'),
-        ['controller' => 'Transactions', 'action' => 'index'],
+    <?= $this->Html->link(__('List Accounts'),
+        ['controller' => 'Accounts', 'action' => 'index'],
         ['class' => 'list-group-item']
     ) ?>
-    <?= $this->Html->link(__('New Transaction'),
-        ['controller' => 'Transactions', 'action' => 'add'],
+    <?= $this->Html->link(__('New Account'),
+        ['controller' => 'Accounts', 'action' => 'add'],
         ['class' => 'list-group-item']
     ) ?>
 </ul>
@@ -94,48 +94,40 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= __('Transactions') ?></h3>
+        <h3 class="panel-title"><?= __('Accounts') ?></h3>
     </div>
-    <?php if (!empty($bank->transactions)): ?>
+    <?php if (!empty($bank->accounts)): ?>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th><?= __('Id') ?></th>
                 <th><?= __('Bank Id') ?></th>
                 <th><?= __('User Id') ?></th>
-                <th><?= __('Amount') ?></th>
-                <th><?= __('Posted') ?></th>
-                <th><?= __('Type') ?></th>
-                <th><?= __('Subtype') ?></th>
-                <th><?= __('Description') ?></th>
+                <th><?= __('Name') ?></th>
+                <th><?= __('Account Number') ?></th>
                 <th><?= __('Created') ?></th>
                 <th><?= __('Modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($bank->transactions as $transactions): ?>
+            <?php foreach ($bank->accounts as $accounts): ?>
                 <tr>
-                    <td><?= h($transactions->id) ?></td>
-                    <td><?= h($transactions->bank_id) ?></td>
-                    <td><?= h($transactions->user_id) ?></td>
-                    <td><?= h($transactions->amount) ?></td>
-                    <td><?= h($transactions->posted) ?></td>
-                    <td><?= h($transactions->type) ?></td>
-                    <td><?= h($transactions->subtype) ?></td>
-                    <td><?= h($transactions->description) ?></td>
-                    <td><?= h($transactions->created) ?></td>
-                    <td><?= h($transactions->modified) ?></td>
+                    <td><?= h($accounts->id) ?></td>
+                    <td><?= h($accounts->bank_id) ?></td>
+                    <td><?= h($accounts->user_id) ?></td>
+                    <td><?= h($accounts->name) ?></td>
+                    <td><?= h($accounts->account_number) ?></td>
+                    <td><?= h($accounts->created) ?></td>
+                    <td><?= h($accounts->modified) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link('',
-                            ['controller' => 'Transactions', 'action' => 'view', $transactions->id],
+                        <?= $this->Html->link('', ['controller' => 'Accounts', 'action' => 'view', $accounts->id],
                             ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                        <?= $this->Html->link('',
-                            ['controller' => 'Transactions', 'action' => 'edit', $transactions->id],
+                        <?= $this->Html->link('', ['controller' => 'Accounts', 'action' => 'edit', $accounts->id],
                             ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                        <?= $this->Form->postLink('',
-                            ['controller' => 'Transactions', 'action' => 'delete', $transactions->id], [
-                                'confirm' => __('Are you sure you want to delete # {0}?', $transactions->id),
+                        <?= $this->Form->postLink('', ['controller' => 'Accounts', 'action' => 'delete', $accounts->id],
+                            [
+                                'confirm' => __('Are you sure you want to delete # {0}?', $accounts->id),
                                 'title' => __('Delete'),
                                 'class' => 'btn btn-default glyphicon glyphicon-trash'
                             ]) ?>
@@ -145,6 +137,6 @@ $this->end();
             </tbody>
         </table>
     <?php else: ?>
-        <p class="panel-body">no Transactions</p>
+        <p class="panel-body">no Accounts</p>
     <?php endif; ?>
 </div>

@@ -8,7 +8,7 @@ use Cake\Validation\Validator;
 /**
  * Banks Model
  *
- * @property \Axm\Budget\Model\Table\TransactionsTable|\Cake\ORM\Association\HasMany $Transactions
+ * @property \Axm\Budget\Model\Table\AccountsTable|\Cake\ORM\Association\HasMany $Accounts
  *
  * @method \Axm\Budget\Model\Entity\Bank get($primaryKey, $options = [])
  * @method \Axm\Budget\Model\Entity\Bank newEntity($data = null, array $options = [])
@@ -40,7 +40,7 @@ class BanksTable extends TableBase
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Transactions', [
+        $this->hasMany('Accounts', [
             'foreignKey' => 'bank_id'
         ]);
     }

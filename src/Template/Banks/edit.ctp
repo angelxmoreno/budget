@@ -20,10 +20,10 @@ $this->Form->postLink(
 ) ?>
 
 <?= $this->Html->link(__('List Banks'), ['action' => 'index'], ['class' => 'list-group-item']) ?>
-<?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'],
+<?= $this->Html->link(__('List Accounts'), ['controller' => 'Accounts', 'action' => 'index'],
     ['class' => 'list-group-item']) ?>
 
-<?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'],
+<?= $this->Html->link(__('New Account'), ['controller' => 'Accounts', 'action' => 'add'],
     ['class' => 'list-group-item']) ?>
 
 <?php

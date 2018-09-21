@@ -4,10 +4,10 @@ $this->extend('/Base/dashboard');
 $this->start('tb_sidebar');
 ?>
 <?= $this->Html->link(__('New Bank'), ['action' => 'add'], ['class' => 'list-group-item']); ?>
-<?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'],
-    ['class' => 'list-group-item']); ?>
-<?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'],
-    ['class' => 'list-group-item']); ?>
+<?= $this->Html->link(__('List Accounts'),
+    ['controller' => 'Accounts', 'action' => 'index'], ['class' => 'list-group-item']); ?>
+<?= $this->Html->link(__('New Account'),
+    ['controller' => 'Accounts', 'action' => 'add'], ['class' => 'list-group-item']); ?>
 <?php $this->end(); ?>
 
 <table class="table table-striped" cellpadding="0" cellspacing="0">
@@ -23,20 +23,18 @@ $this->start('tb_sidebar');
     <tbody>
     <?php foreach ($banks as $bank): ?>
         <tr>
-            <td><?= $this->Number->format($bank->id) ?></td>
-            <td><?= h($bank->name) ?></td>
-            <td><?= h($bank->created) ?></td>
-            <td><?= h($bank->modified) ?></td>
+            <td><?= $this->Number->format($< %= $singularVar ?>->< %= $field ?>) ?></td>
+            <td><?= h($< %= $singularVar ?>->< %= $field ?>) ?></td>
+            <td><?= h($< %= $singularVar ?>->< %= $field ?>) ?></td>
+            <td><?= h($< %= $singularVar ?>->< %= $field ?>) ?></td>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $bank->id],
-                    ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $bank->id],
-                    ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $bank->id], [
-                    'confirm' => __('Are you sure you want to delete # {0}?', $bank->id),
-                    'title' => __('Delete'),
-                    'class' => 'btn btn-default glyphicon glyphicon-trash'
-                ]) ?>
+                <?= $this->Html->link('', ['action' => 'view', < %= $pk ?>], ['title' => __('View'), 'class' => 'btn
+                btn-default glyphicon glyphicon-eye-open']) ?>
+                <?= $this->Html->link('', ['action' => 'edit', < %= $pk ?>], ['title' => __('Edit'), 'class' => 'btn
+                btn-default glyphicon glyphicon-pencil']) ?>
+                <?= $this->Form->postLink('', ['action' => 'delete', < %= $pk ?>], ['confirm' => __('Are you sure you
+                want to delete # {0}?', < %= $pk ?>), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon
+                glyphicon-trash']) ?>
             </td>
         </tr>
     <?php endforeach; ?>

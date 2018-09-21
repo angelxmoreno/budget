@@ -1,22 +1,22 @@
 <?php
 namespace Axm\Budget\Test\TestCase\Model\Table;
 
-use Axm\Budget\Model\Table\BanksTable;
+use Axm\Budget\Model\Table\AccountsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * Axm\Budget\Model\Table\BanksTable Test Case
+ * Axm\Budget\Model\Table\AccountsTable Test Case
  */
-class BanksTableTest extends TestCase
+class AccountsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \Axm\Budget\Model\Table\BanksTable
+     * @var \Axm\Budget\Model\Table\AccountsTable
      */
-    public $Banks;
+    public $Accounts;
 
     /**
      * Fixtures
@@ -24,8 +24,10 @@ class BanksTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
+        'app.accounts',
         'app.banks',
-        'app.accounts'
+        'app.users',
+        'app.transactions'
     ];
 
     /**
@@ -36,8 +38,8 @@ class BanksTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Banks') ? [] : ['className' => BanksTable::class];
-        $this->Banks = TableRegistry::getTableLocator()->get('Banks', $config);
+        $config = TableRegistry::getTableLocator()->exists('Accounts') ? [] : ['className' => AccountsTable::class];
+        $this->Accounts = TableRegistry::getTableLocator()->get('Accounts', $config);
     }
 
     /**
@@ -47,7 +49,7 @@ class BanksTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Banks);
+        unset($this->Accounts);
 
         parent::tearDown();
     }

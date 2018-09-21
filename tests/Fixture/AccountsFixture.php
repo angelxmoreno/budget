@@ -4,10 +4,10 @@ namespace Axm\Budget\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * BanksFixture
+ * AccountsFixture
  *
  */
-class BanksFixture extends TestFixture
+class AccountsFixture extends TestFixture
 {
 
     /**
@@ -18,13 +18,21 @@ class BanksFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'bank_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'name' => ['type' => 'string', 'length' => 150, 'null' => false, 'default' => '', 'collate' => 'utf8mb4_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'url' => ['type' => 'text', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8mb4_unicode_ci', 'comment' => '', 'precision' => null],
+        'account_number' => ['type' => 'string', 'length' => 100, 'null' => true, 'default' => '', 'collate' => 'utf8mb4_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        '_indexes' => [
+            'bank_id' => ['type' => 'index', 'columns' => ['bank_id'], 'length' => []],
+            'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+        ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
             'name' => ['type' => 'unique', 'columns' => ['name'], 'length' => []],
+            'unique_name_per_user' => ['type' => 'unique', 'columns' => ['bank_id', 'user_id', 'name'], 'length' => []],
+            'unique_account_number_per_user' => ['type' => 'unique', 'columns' => ['bank_id', 'user_id', 'account_number'], 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -43,10 +51,12 @@ class BanksFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
+                'bank_id' => 1,
+                'user_id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'url' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'created' => '2018-09-21 03:03:57',
-                'modified' => '2018-09-21 03:03:57'
+                'account_number' => 'Lorem ipsum dolor sit amet',
+                'created' => '2018-09-21 03:03:51',
+                'modified' => '2018-09-21 03:03:51'
             ],
         ];
         parent::init();

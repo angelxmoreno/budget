@@ -7,6 +7,7 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property \Axm\Budget\Model\Table\AccountsTable|\Cake\ORM\Association\HasMany $Accounts
  * @property \Axm\Budget\Model\Table\TransactionsTable|\Cake\ORM\Association\HasMany $Transactions
  *
  * @method \Axm\Budget\Model\Entity\User get($primaryKey, $options = [])
@@ -39,6 +40,9 @@ class UsersTable extends TableBase
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('Accounts', [
+            'foreignKey' => 'user_id'
+        ]);
         $this->hasMany('Transactions', [
             'foreignKey' => 'user_id'
         ]);

@@ -20,12 +20,12 @@ $this->start('tb_actions');
     ['action' => 'add'],
     ['class' => 'list-group-item']
 ) ?>
-<?= $this->Html->link(__('List Banks'),
-    ['controller' => 'Banks', 'action' => 'index'],
+<?= $this->Html->link(__('List Accounts'),
+    ['controller' => 'Accounts', 'action' => 'index'],
     ['class' => 'list-group-item']
 ) ?>
-<?= $this->Html->link(__('New Bank'),
-    ['controller' => 'Banks', 'action' => 'add'],
+<?= $this->Html->link(__('New Account'),
+    ['controller' => 'Accounts', 'action' => 'add'],
     ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('List Users'),
@@ -58,12 +58,12 @@ $this->start('tb_sidebar');
         ['action' => 'add'],
         ['class' => 'list-group-item']
     ) ?>
-    <?= $this->Html->link(__('List Banks'),
-        ['controller' => 'Banks', 'action' => 'index'],
+    <?= $this->Html->link(__('List Accounts'),
+        ['controller' => 'Accounts', 'action' => 'index'],
         ['class' => 'list-group-item']
     ) ?>
-    <?= $this->Html->link(__('New Bank'),
-        ['controller' => 'Banks', 'action' => 'add'],
+    <?= $this->Html->link(__('New Account'),
+        ['controller' => 'Accounts', 'action' => 'add'],
         ['class' => 'list-group-item']
     ) ?>
     <?= $this->Html->link(__('List Users'),
@@ -89,9 +89,9 @@ $this->end();
             <td><?= h($transaction->id) ?></td>
         </tr>
         <tr>
-            <td><?= __('Bank') ?></td>
-            <td><?= $transaction->has('bank') ? $this->Html->link($transaction->bank->name,
-                    ['controller' => 'Banks', 'action' => 'view', $transaction->bank->id]) : '' ?></td>
+            <td><?= __('Account') ?></td>
+            <td><?= $transaction->has('account') ? $this->Html->link($transaction->account->name,
+                    ['controller' => 'Accounts', 'action' => 'view', $transaction->account->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('User') ?></td>

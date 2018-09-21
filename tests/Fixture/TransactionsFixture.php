@@ -18,8 +18,8 @@ class TransactionsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => '', 'comment' => '', 'precision' => null],
-        'bank_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'account_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'amount' => ['type' => 'decimal', 'length' => 11, 'precision' => 2, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => ''],
         'posted' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'type' => ['type' => 'string', 'length' => 100, 'null' => true, 'default' => '', 'collate' => 'utf8mb4_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -28,8 +28,8 @@ class TransactionsFixture extends TestFixture
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'bank_id' => ['type' => 'index', 'columns' => ['bank_id'], 'length' => []],
             'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+            'account_id' => ['type' => 'index', 'columns' => ['account_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
@@ -50,16 +50,16 @@ class TransactionsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'da6d3b61-3d82-4786-a877-067d78df31bc',
-                'bank_id' => 1,
+                'id' => '70471d03-f316-4e90-b83b-e11959e416b4',
+                'account_id' => 1,
                 'user_id' => 1,
                 'amount' => 1.5,
-                'posted' => '2018-09-19 09:24:43',
+                'posted' => '2018-09-21 03:04:28',
                 'type' => 'Lorem ipsum dolor sit amet',
                 'subtype' => 'Lorem ipsum dolor sit amet',
                 'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'created' => '2018-09-19 09:24:43',
-                'modified' => '2018-09-19 09:24:43'
+                'created' => '2018-09-21 03:04:28',
+                'modified' => '2018-09-21 03:04:28'
             ],
         ];
         parent::init();

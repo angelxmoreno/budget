@@ -1,7 +1,6 @@
 <?php
-namespace Axm\Budget\Model\Entity;
 
-use Cake\I18n\FrozenTime;
+namespace Axm\Budget\Model\Entity;
 
 /**
  * User Entity

@@ -2,12 +2,10 @@
 
 namespace Axm\Budget\View\Helper;
 
-use BootstrapUI\View\Helper\HtmlHelper;
-use Axm\Budget\Model\Entity\EntityBase;
 use Axm\Budget\Model\Entity\Location;
 use Axm\Budget\Model\Entity\Project;
 use Axm\Budget\Model\Entity\Talent;
-use Axm\Budget\Model\Entity\User;
+use BootstrapUI\View\Helper\HtmlHelper;
 
 /**
  * AppHtml helper

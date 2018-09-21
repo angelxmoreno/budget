@@ -9,20 +9,22 @@ $this->extend('/Base/dashboard');
 
 $this->start('tb_sidebar');
 ?>
-    <?=
-    $this->Form->postLink(
+<?=
+$this->Form->postLink(
     __('Delete'),
     ['action' => 'delete', $bank->id],
     [
         'confirm' => __('Are you sure you want to delete # {0}?', $bank->id),
-        'class'=>'list-group-item'
+        'class' => 'list-group-item'
     ]
-)?>
+) ?>
 
-    <?= $this->Html->link(__('List Banks'), ['action' => 'index'], ['class'=>'list-group-item']) ?>
-    <?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('List Banks'), ['action' => 'index'], ['class' => 'list-group-item']) ?>
+<?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'],
+    ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'],
+    ['class' => 'list-group-item']) ?>
 
 <?php
 $this->end();

@@ -9,10 +9,12 @@ $this->extend('/Base/dashboard');
 
 $this->start('tb_sidebar');
 ?>
-    <?= $this->Html->link(__('List Banks'), ['action' => 'index'], ['class'=>'list-group-item']) ?>
-    <?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('List Banks'), ['action' => 'index'], ['class' => 'list-group-item']) ?>
+<?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'],
+    ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'],
+    ['class' => 'list-group-item']) ?>
 
 <?php
 $this->end();

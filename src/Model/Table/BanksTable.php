@@ -1,9 +1,9 @@
 <?php
+
 namespace Axm\Budget\Model\Table;
 
 use Cake\ORM;
 use Cake\Validation\Validator;
-use Axm\Budget\Model\Entity;
 
 /**
  * Banks Model
@@ -35,54 +35,54 @@ class BanksTable extends TableBase
         parent::initialize($config);
 
         $this->setTable('banks');
-    $this->setDisplayField('name');
+        $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-    $this->addBehavior('Timestamp');
+        $this->addBehavior('Timestamp');
 
         $this->hasMany('Transactions', [
             'foreignKey' => 'bank_id'
         ]);
-}
-
-    /**
-    * Default validation rules.
-    *
-    * @param Validator $validator Validator instance.
-    * @return Validator
-    */
-    public function validationDefault(Validator $validator)
-    {
-                                $validator
-                                            ->nonNegativeInteger('id')
-                                                                                ->allowEmpty('id', 'create');
-            
-                                        $validator
-                                            ->scalar('name')
-                                            ->maxLength('name', 150)
-                                            ->requirePresence('name', 'create')
-                                            ->notEmpty('name')
-                                                                                ->add('name', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
-            
-                                        $validator
-                                            ->scalar('url')
-                                            ->maxLength('url', 255)
-                                                                                ->allowEmpty('url');
-            
-                return $validator;
     }
 
     /**
-    * Returns a rules checker object that will be used for validating
-    * application integrity.
-    *
-    * @param ORM\RulesChecker $rules The rules object to be modified.
-    * @return ORM\RulesChecker
-    */
+     * Default validation rules.
+     *
+     * @param Validator $validator Validator instance.
+     * @return Validator
+     */
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+            ->nonNegativeInteger('id')
+            ->allowEmpty('id', 'create');
+
+        $validator
+            ->scalar('name')
+            ->maxLength('name', 150)
+            ->requirePresence('name', 'create')
+            ->notEmpty('name')
+            ->add('name', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+
+        $validator
+            ->scalar('url')
+            ->maxLength('url', 255)
+            ->allowEmpty('url');
+
+        return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param ORM\RulesChecker $rules The rules object to be modified.
+     * @return ORM\RulesChecker
+     */
     public function buildRules(ORM\RulesChecker $rules)
     {
-            $rules->add($rules->isUnique(['name']));
-    
-    return $rules;
+        $rules->add($rules->isUnique(['name']));
+
+        return $rules;
     }
 }

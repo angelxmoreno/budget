@@ -1,9 +1,8 @@
 <?php
+
 namespace Axm\Budget\Model\Table;
 
-use Cake\ORM;
 use Cake\Validation\Validator;
-use Axm\Budget\Model\Entity;
 
 /**
  * Users Model
@@ -35,34 +34,34 @@ class UsersTable extends TableBase
         parent::initialize($config);
 
         $this->setTable('users');
-    $this->setDisplayField('name');
+        $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-    $this->addBehavior('Timestamp');
+        $this->addBehavior('Timestamp');
 
         $this->hasMany('Transactions', [
             'foreignKey' => 'user_id'
         ]);
-}
+    }
 
     /**
-    * Default validation rules.
-    *
-    * @param Validator $validator Validator instance.
-    * @return Validator
-    */
+     * Default validation rules.
+     *
+     * @param Validator $validator Validator instance.
+     * @return Validator
+     */
     public function validationDefault(Validator $validator)
     {
-                                $validator
-                                            ->nonNegativeInteger('id')
-                                                                                ->allowEmpty('id', 'create');
-            
-                                        $validator
-                                            ->scalar('name')
-                                            ->maxLength('name', 150)
-                                            ->requirePresence('name', 'create')
-                                                                                ->notEmpty('name');
-            
-                return $validator;
+        $validator
+            ->nonNegativeInteger('id')
+            ->allowEmpty('id', 'create');
+
+        $validator
+            ->scalar('name')
+            ->maxLength('name', 150)
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
+
+        return $validator;
     }
 }

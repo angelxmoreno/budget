@@ -4,18 +4,16 @@ $this->extend('/Base/dashboard');
 $this->start('tb_sidebar');
 ?>
 <?= $this->Html->link(__('New Account'), ['action' => 'add'], ['class' => 'list-group-item']); ?>
-<?= $this->Html->link(__('List Banks'),
-    ['controller' => 'Banks', 'action' => 'index'], ['class' => 'list-group-item']); ?>
-<?= $this->Html->link(__('New Bank'),
-    ['controller' => 'Banks', 'action' => 'add'], ['class' => 'list-group-item']); ?>
-<?= $this->Html->link(__('List Users'),
-    ['controller' => 'Users', 'action' => 'index'], ['class' => 'list-group-item']); ?>
-<?= $this->Html->link(__('New User'),
-    ['controller' => 'Users', 'action' => 'add'], ['class' => 'list-group-item']); ?>
-<?= $this->Html->link(__('List Transactions'),
-    ['controller' => 'Transactions', 'action' => 'index'], ['class' => 'list-group-item']); ?>
-<?= $this->Html->link(__('New Transaction'),
-    ['controller' => 'Transactions', 'action' => 'add'], ['class' => 'list-group-item']); ?>
+<?= $this->Html->link(__('List Banks'), ['controller' => 'Banks', 'action' => 'index'],
+    ['class' => 'list-group-item']); ?>
+<?= $this->Html->link(__('New Bank'), ['controller' => 'Banks', 'action' => 'add'], ['class' => 'list-group-item']); ?>
+<?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index'],
+    ['class' => 'list-group-item']); ?>
+<?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add'], ['class' => 'list-group-item']); ?>
+<?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'],
+    ['class' => 'list-group-item']); ?>
+<?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'],
+    ['class' => 'list-group-item']); ?>
 <?php $this->end(); ?>
 
 <table class="table table-striped" cellpadding="0" cellspacing="0">
@@ -34,29 +32,29 @@ $this->start('tb_sidebar');
     <tbody>
     <?php foreach ($accounts as $account): ?>
         <tr>
-            <td><?= $this->Number->format($< %= $singularVar ?>->< %= $field ?>) ?></td>
+            <td><?= $this->Number->format($account->id) ?></td>
             <td>
-                <?= $< %= $singularVar ?>->has('bank') ? $this->Html->link($< %= $singularVar ?>->< %=
-                $details['property'] ?>->< %= $details['displayField'] ?>, ['controller' => 'Banks', 'action' => 'view',
-                $< %= $singularVar ?>->< %= $details['property'] ?>->< %= $details['primaryKey'][0] ?>]) : '' ?>
+                <?= $account->has('bank') ? $this->Html->link($account->bank->name,
+                    ['controller' => 'Banks', 'action' => 'view', $account->bank->id]) : '' ?>
             </td>
             <td>
-                <?= $< %= $singularVar ?>->has('user') ? $this->Html->link($< %= $singularVar ?>->< %=
-                $details['property'] ?>->< %= $details['displayField'] ?>, ['controller' => 'Users', 'action' => 'view',
-                $< %= $singularVar ?>->< %= $details['property'] ?>->< %= $details['primaryKey'][0] ?>]) : '' ?>
+                <?= $account->has('user') ? $this->Html->link($account->user->name,
+                    ['controller' => 'Users', 'action' => 'view', $account->user->id]) : '' ?>
             </td>
-            <td><?= h($< %= $singularVar ?>->< %= $field ?>) ?></td>
-            <td><?= h($< %= $singularVar ?>->< %= $field ?>) ?></td>
-            <td><?= h($< %= $singularVar ?>->< %= $field ?>) ?></td>
-            <td><?= h($< %= $singularVar ?>->< %= $field ?>) ?></td>
+            <td><?= h($account->name) ?></td>
+            <td><?= h($account->account_number) ?></td>
+            <td><?= h($account->created) ?></td>
+            <td><?= h($account->modified) ?></td>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', < %= $pk ?>], ['title' => __('View'), 'class' => 'btn
-                btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', < %= $pk ?>], ['title' => __('Edit'), 'class' => 'btn
-                btn-default glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', < %= $pk ?>], ['confirm' => __('Are you sure you
-                want to delete # {0}?', < %= $pk ?>), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon
-                glyphicon-trash']) ?>
+                <?= $this->Html->link('', ['action' => 'view', $account->id],
+                    ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                <?= $this->Html->link('', ['action' => 'edit', $account->id],
+                    ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                <?= $this->Form->postLink('', ['action' => 'delete', $account->id], [
+                    'confirm' => __('Are you sure you want to delete # {0}?', $account->id),
+                    'title' => __('Delete'),
+                    'class' => 'btn btn-default glyphicon glyphicon-trash'
+                ]) ?>
             </td>
         </tr>
     <?php endforeach; ?>

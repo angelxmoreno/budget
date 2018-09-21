@@ -1,12 +1,11 @@
 <?php
-namespace Axm\Budget\Model\Entity;
 
-use Cake\I18n\FrozenTime;
+namespace Axm\Budget\Model\Entity;
 
 /**
  * Transaction Entity
  *
- * @property int $id
+ * @property string $id
  * @property int $bank_id
  * @property int $user_id
  * @property float $amount
@@ -33,16 +32,6 @@ class Transaction extends EntityBase
      * @var array
      */
     protected $_accessible = [
-        'bank_id' => true,
-        'user_id' => true,
-        'amount' => true,
-        'posted' => true,
-        'type' => true,
-        'subtype' => true,
-        'description' => true,
-        'created' => true,
-        'modified' => true,
-        'bank' => true,
-        'user' => true
+        '*' => true
     ];
 }

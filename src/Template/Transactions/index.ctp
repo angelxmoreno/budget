@@ -26,7 +26,7 @@ $this->start('tb_sidebar');
     <tbody>
         <?php foreach ($transactions as $transaction): ?>
         <tr>
-            <td><?= $this->Number->format($transaction->id) ?></td>
+            <td><?= h($transaction->id) ?></td>
             <td>
                 <?= $transaction->has('bank') ? $this->Html->link($transaction->bank->name, ['controller' => 'Banks', 'action' => 'view', $transaction->bank->id]) : '' ?>
             </td>

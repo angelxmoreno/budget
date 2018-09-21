@@ -17,6 +17,7 @@
         "cakephp/plugin-installer": "^1.0",
         "friendsofcake/bootstrap-ui": "^1.4",
         "josegonzalez/dotenv": "3.*",
+        "league/csv": "^9.1",
         "mobiledetect/mobiledetectlib": "2.*",
         "muffin/slug": "^1.4",
         "muffin/trash": "^2.1",
@@ -39,14 +40,16 @@
         "psr-4": {
             "Axm\\Budget\\": "src/",
             "TestData\\": "./plugins/TestData/src/",
-            "Auth\\": "./plugins/Auth/src/"
+            "Auth\\": "./plugins/Auth/src/",
+            "ImportCsv\\": "./plugins/ImportCsv/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Axm\\Budget\\Test\\": "tests/",
             "Cake\\Test\\": "vendor/cakephp/cakephp/tests/",
-            "Auth\\Test\\": "./plugins/Auth/tests/"
+            "Auth\\Test\\": "./plugins/Auth/tests/",
+            "ImportCsv\\Test\\": "./plugins/ImportCsv/tests/"
         }
     },
     "scripts": {

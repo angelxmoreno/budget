@@ -85,6 +85,10 @@ $this->end();
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
+            <td><?= __('Id') ?></td>
+            <td><?= h($transaction->id) ?></td>
+        </tr>
+        <tr>
             <td><?= __('Bank') ?></td>
             <td><?= $transaction->has('bank') ? $this->Html->link($transaction->bank->name, ['controller' => 'Banks', 'action' => 'view', $transaction->bank->id]) : '' ?></td>
         </tr>
@@ -99,10 +103,6 @@ $this->end();
         <tr>
             <td><?= __('Subtype') ?></td>
             <td><?= h($transaction->subtype) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= $this->Number->format($transaction->id) ?></td>
         </tr>
         <tr>
             <td><?= __('Amount') ?></td>

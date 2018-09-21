@@ -17,10 +17,10 @@ class TransactionsFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => '', 'comment' => '', 'precision' => null],
         'bank_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'amount' => ['type' => 'decimal', 'length' => 11, 'precision' => 9, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => ''],
+        'amount' => ['type' => 'decimal', 'length' => 11, 'precision' => 2, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => ''],
         'posted' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'type' => ['type' => 'string', 'length' => 100, 'null' => true, 'default' => '', 'collate' => 'utf8mb4_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'subtype' => ['type' => 'string', 'length' => 100, 'null' => true, 'default' => null, 'collate' => 'utf8mb4_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -50,16 +50,16 @@ class TransactionsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 1,
+                'id' => 'da6d3b61-3d82-4786-a877-067d78df31bc',
                 'bank_id' => 1,
                 'user_id' => 1,
                 'amount' => 1.5,
-                'posted' => '2018-09-19 05:28:45',
+                'posted' => '2018-09-19 09:24:43',
                 'type' => 'Lorem ipsum dolor sit amet',
                 'subtype' => 'Lorem ipsum dolor sit amet',
                 'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'created' => '2018-09-19 05:28:45',
-                'modified' => '2018-09-19 05:28:45'
+                'created' => '2018-09-19 09:24:43',
+                'modified' => '2018-09-19 09:24:43'
             ],
         ];
         parent::init();

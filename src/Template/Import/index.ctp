@@ -25,7 +25,7 @@ $this->end();
 ?>
 <?= $this->Form->create(null, ['type' => 'file']); ?>
 <fieldset>
-    <legend><?= __('Upload {0}', ['Transaction']) ?></legend>
+    <legend><?= __('Upload Transactions') ?></legend>
     <?= $this->Form->input('csv_file', [
         'type' => 'file',
         'label' => 'CSV File'

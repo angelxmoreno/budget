@@ -24,7 +24,7 @@ class AuthHelper extends Helper
      */
     protected function getAuthArray() : array
     {
-        return $this->getSession()->read('Auth.User');
+        return $this->getSession()->read('Auth.User') ?: [];
     }
 
     /**

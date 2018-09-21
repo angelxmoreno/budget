@@ -52,6 +52,7 @@ class AppView extends UIView
             $this->layout = $options['layout'];
         }
 
+        $this->loadHelper('Auth.Auth');
         $this->loadHelper('Html', ['className' => 'AppHtml']);
         $this->loadHelper('Form', ['className' => 'BootstrapUI.Form']);
         $this->loadHelper('Flash', ['className' => 'BootstrapUI.Flash']);

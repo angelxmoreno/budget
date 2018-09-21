@@ -1,8 +1,8 @@
-
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <h1>Theme example</h1>
-    <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
+    <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to
+        create something more unique by building on or modifying it.</p>
 </div>
 
 
@@ -191,7 +191,8 @@
 <div class="page-header">
     <h1>Thumbnails</h1>
 </div>
-<img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
+<img data-src="holder.js/200x200" class="img-thumbnail"
+     alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
 
 
 <div class="page-header">
@@ -272,7 +273,8 @@
     <h1>Dropdown menus</h1>
 </div>
 <div class="dropdown theme-dropdown clearfix">
-    <a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+    <a id="dropdownMenu1" href="#" class="sr-only dropdown-toggle" data-toggle="dropdown" role="button"
+       aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li class="active"><a href="#">Action</a></li>
         <li><a href="#">Another action</a></li>
@@ -319,7 +321,8 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -352,7 +355,8 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -390,27 +394,36 @@
     <h1>Progress bars</h1>
 </div>
 <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+         style="width: 60%;"><span class="sr-only">60% Complete</span></div>
 </div>
 <div class="progress">
-    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+         aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
 </div>
 <div class="progress">
-    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
+    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0"
+         aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
 </div>
 <div class="progress">
-    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+         aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
 </div>
 <div class="progress">
-    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+         aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
 </div>
 <div class="progress">
-    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete</span></div>
+    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+         aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete</span></div>
 </div>
 <div class="progress">
-    <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
-    <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
-    <div class="progress-bar progress-bar-danger" style="width: 10%"><span class="sr-only">10% Complete (danger)</span></div>
+    <div class="progress-bar progress-bar-success" style="width: 35%"><span
+            class="sr-only">35% Complete (success)</span></div>
+    <div class="progress-bar progress-bar-warning" style="width: 20%"><span
+            class="sr-only">20% Complete (warning)</span></div>
+    <div class="progress-bar progress-bar-danger" style="width: 10%"><span class="sr-only">10% Complete (danger)</span>
+    </div>
 </div>
 
 
@@ -442,15 +455,18 @@
         <div class="list-group">
             <a href="#" class="list-group-item active">
                 <h4 class="list-group-item-heading">List group item heading</h4>
-                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+                    risus varius blandit.</p>
             </a>
             <a href="#" class="list-group-item">
                 <h4 class="list-group-item-heading">List group item heading</h4>
-                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+                    risus varius blandit.</p>
             </a>
             <a href="#" class="list-group-item">
                 <h4 class="list-group-item-heading">List group item heading</h4>
-                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+                    risus varius blandit.</p>
             </a>
         </div>
     </div><!-- /.col-sm-4 -->
@@ -522,7 +538,10 @@
     <h1>Wells</h1>
 </div>
 <div class="well">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non
+        magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque
+        nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi
+        erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
 </div>
 
 

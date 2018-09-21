@@ -36,6 +36,8 @@ class Application extends BaseApplication
      */
     public function bootstrap()
     {
+        $this->addPlugin('Muffin/Footprint');
+
         $this->addPlugin('Muffin/Trash');
 
         $this->addPlugin('Muffin/Slug');

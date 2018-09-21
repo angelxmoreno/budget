@@ -14,7 +14,6 @@ use Cake\Datasource\ResultSetInterface;
  */
 class TransactionsController extends AppController
 {
-
     /**
      * Index method
      *

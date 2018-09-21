@@ -5,44 +5,44 @@ $this->extend('/Base/dashboard');
 $this->start('tb_actions');
 ?>
 <?= $this->Html->link(__('Edit Account'),
-    ['action' => 'edit',$account->id],
-    ['class'=>'list-group-item']
+    ['action' => 'edit', $account->id],
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Form->postLink(__('Delete Account'),
-    ['action' => 'delete',$account->id],
-    ['confirm' => __('Are you sure you want to delete # {0}?', $account->id),'class'=>'list-group-item']
+    ['action' => 'delete', $account->id],
+    ['confirm' => __('Are you sure you want to delete # {0}?', $account->id), 'class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('List Accounts'),
     ['action' => 'index'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('New Account'),
     ['action' => 'add'],
-    ['class'=>'list-group-item']
- ) ?>
+    ['class' => 'list-group-item']
+) ?>
 <?= $this->Html->link(__('List Banks'),
     ['controller' => 'Banks', 'action' => 'index'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('New Bank'),
     ['controller' => 'Banks', 'action' => 'add'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('List Users'),
     ['controller' => 'Users', 'action' => 'index'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('New User'),
     ['controller' => 'Users', 'action' => 'add'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('List Transactions'),
     ['controller' => 'Transactions', 'action' => 'index'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('New Transaction'),
     ['controller' => 'Transactions', 'action' => 'add'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?php
 $this->end();
@@ -50,46 +50,46 @@ $this->end();
 $this->start('tb_sidebar');
 ?>
 <ul class="nav nav-sidebar">
-<?= $this->Html->link(__('Edit Account'),
-    ['action' => 'edit',$account->id],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Form->postLink(__('Delete Account'),
-    ['action' => 'delete',$account->id],
-    ['confirm' => __('Are you sure you want to delete # {0}?', $account->id),'class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('List Accounts'),
-    ['action' => 'index'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('New Account'),
-    ['action' => 'add'],
-    ['class'=>'list-group-item']
- ) ?>
-<?= $this->Html->link(__('List Banks'),
-    ['controller' => 'Banks', 'action' => 'index'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('New Bank'),
-    ['controller' => 'Banks', 'action' => 'add'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('List Users'),
-    ['controller' => 'Users', 'action' => 'index'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('New User'),
-    ['controller' => 'Users', 'action' => 'add'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('List Transactions'),
-    ['controller' => 'Transactions', 'action' => 'index'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('New Transaction'),
-    ['controller' => 'Transactions', 'action' => 'add'],
-    ['class'=>'list-group-item']
-) ?>
+    <?= $this->Html->link(__('Edit Account'),
+        ['action' => 'edit', $account->id],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Form->postLink(__('Delete Account'),
+        ['action' => 'delete', $account->id],
+        ['confirm' => __('Are you sure you want to delete # {0}?', $account->id), 'class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('List Accounts'),
+        ['action' => 'index'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('New Account'),
+        ['action' => 'add'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('List Banks'),
+        ['controller' => 'Banks', 'action' => 'index'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('New Bank'),
+        ['controller' => 'Banks', 'action' => 'add'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('List Users'),
+        ['controller' => 'Users', 'action' => 'index'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('New User'),
+        ['controller' => 'Users', 'action' => 'add'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('List Transactions'),
+        ['controller' => 'Transactions', 'action' => 'index'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('New Transaction'),
+        ['controller' => 'Transactions', 'action' => 'add'],
+        ['class' => 'list-group-item']
+    ) ?>
 </ul>
 <?php
 $this->end();
@@ -102,11 +102,13 @@ $this->end();
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
             <td><?= __('Bank') ?></td>
-            <td><?= $account->has('bank') ? $this->Html->link($account->bank->name, ['controller' => 'Banks', 'action' => 'view', $account->bank->id]) : '' ?></td>
+            <td><?= $account->has('bank') ? $this->Html->link($account->bank->name,
+                    ['controller' => 'Banks', 'action' => 'view', $account->bank->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('User') ?></td>
-            <td><?= $account->has('user') ? $this->Html->link($account->user->name, ['controller' => 'Users', 'action' => 'view', $account->user->id]) : '' ?></td>
+            <td><?= $account->has('user') ? $this->Html->link($account->user->name,
+                    ['controller' => 'Users', 'action' => 'view', $account->user->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Name') ?></td>
@@ -167,9 +169,18 @@ $this->end();
                     <td><?= h($transactions->created) ?></td>
                     <td><?= h($transactions->modified) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link('', ['controller' => 'Transactions', 'action' => 'view', $transactions->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                        <?= $this->Html->link('', ['controller' => 'Transactions', 'action' => 'edit', $transactions->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                        <?= $this->Form->postLink('', ['controller' => 'Transactions', 'action' => 'delete', $transactions->id], ['confirm' => __('Are you sure you want to delete # {0}?', $transactions->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
+                        <?= $this->Html->link('',
+                            ['controller' => 'Transactions', 'action' => 'view', $transactions->id],
+                            ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                        <?= $this->Html->link('',
+                            ['controller' => 'Transactions', 'action' => 'edit', $transactions->id],
+                            ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                        <?= $this->Form->postLink('',
+                            ['controller' => 'Transactions', 'action' => 'delete', $transactions->id], [
+                                'confirm' => __('Are you sure you want to delete # {0}?', $transactions->id),
+                                'title' => __('Delete'),
+                                'class' => 'btn btn-default glyphicon glyphicon-trash'
+                            ]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

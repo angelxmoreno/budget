@@ -33,7 +33,7 @@
 </head>
 <body>
 <!-- Fixed navbar -->
-<?=$this->element('nav')?>
+<?= $this->element('nav') ?>
 <div class="container theme-showcase" role="main">
     <?= $this->Flash->render() ?>
     <?= $this->fetch('content') ?>

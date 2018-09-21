@@ -83,4 +83,14 @@ class TransactionsTableTest extends TestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
+
+    /**
+     * Test createUuid method
+     *
+     * @return void
+     */
+    public function testCreateUuid()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
 }

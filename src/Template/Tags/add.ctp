@@ -9,14 +9,18 @@ $this->extend('/Base/dashboard');
 
 $this->start('tb_sidebar');
 ?>
-    <?= $this->Html->link(__('List Tags'), ['action' => 'index'], ['class'=>'list-group-item']) ?>
-    <?= $this->Html->link(__('List Parent Tags'), ['controller' => 'Tags', 'action' => 'index'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('List Tags'), ['action' => 'index'], ['class' => 'list-group-item']) ?>
+<?= $this->Html->link(__('List Parent Tags'), ['controller' => 'Tags', 'action' => 'index'],
+    ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('New Parent Tag'), ['controller' => 'Tags', 'action' => 'add'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('New Parent Tag'), ['controller' => 'Tags', 'action' => 'add'],
+    ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'],
+    ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'],
+    ['class' => 'list-group-item']) ?>
 
 <?php
 $this->end();

@@ -9,28 +9,32 @@ $this->extend('/Base/dashboard');
 
 $this->start('tb_sidebar');
 ?>
-    <?=
-    $this->Form->postLink(
+<?=
+$this->Form->postLink(
     __('Delete'),
     ['action' => 'delete', $account->id],
     [
         'confirm' => __('Are you sure you want to delete # {0}?', $account->id),
-        'class'=>'list-group-item'
+        'class' => 'list-group-item'
     ]
-)?>
+) ?>
 
-    <?= $this->Html->link(__('List Accounts'), ['action' => 'index'], ['class'=>'list-group-item']) ?>
-    <?= $this->Html->link(__('List Banks'), ['controller' => 'Banks', 'action' => 'index'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('List Accounts'), ['action' => 'index'], ['class' => 'list-group-item']) ?>
+<?= $this->Html->link(__('List Banks'), ['controller' => 'Banks', 'action' => 'index'],
+    ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('New Bank'), ['controller' => 'Banks', 'action' => 'add'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('New Bank'), ['controller' => 'Banks', 'action' => 'add'], ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index'],
+    ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add'], ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('List Transactions'), ['controller' => 'Transactions', 'action' => 'index'],
+    ['class' => 'list-group-item']) ?>
 
-    <?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'], ['class'=>'list-group-item']) ?>
+<?= $this->Html->link(__('New Transaction'), ['controller' => 'Transactions', 'action' => 'add'],
+    ['class' => 'list-group-item']) ?>
 
 <?php
 $this->end();

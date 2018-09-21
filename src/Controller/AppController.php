@@ -15,9 +15,8 @@
 
 namespace Axm\Budget\Controller;
 
-use Axm\Budget\Model\Entity\User;
 use Cake\Controller\Controller;
-use Cake\ORM\TableRegistry;
+use Muffin\Footprint\Auth\FootprintAwareTrait;
 
 /**
  * Application Controller
@@ -30,10 +29,7 @@ use Cake\ORM\TableRegistry;
  */
 class AppController extends Controller
 {
-    /**
-     * @var User
-     */
-    protected $currentUser;
+    use FootprintAwareTrait;
 
     /**
      * Initialization hook method.
@@ -51,56 +47,9 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
         ]);
-        /*
-         * Enable the following component for recommended CakePHP security settings.
-         * see https://book.cakephp.org/3.0/en/controllers/components/security.html
-         */
+        $this->_userModel = 'Auth.Auths';
         $this->loadComponent('Security');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth.Auth');
-    }
-
-    /**
-     * @throws \Exception
-     */
-    protected function loadAuth()
-    {
-        $this->loadComponent('Auth', [
-            'loginAction' => [
-                'prefix' => null,
-                'plugin' => null,
-                'controller' => 'Auth',
-                'action' => 'login'
-            ],
-            'loginRedirect' => [
-                'prefix' => null,
-                'plugin' => null,
-                'controller' => 'Projects',
-                'action' => 'index'
-            ],
-            'authError' => 'Did you really think you are allowed to see that?',
-            'flash' => [
-                'element' => 'error',
-                'key' => 'flash'
-            ],
-            'authenticate' => [
-                'Form' => [
-                    'fields' => ['username' => 'email']
-                ]
-            ],
-            'storage' => 'Session',
-            'unauthorizedRedirect' => $this->referer()
-        ]);
-        $this->Auth->allow(['index', 'display', 'view', 'register', 'logout', 'login']);
-        $this->setCurrentUser();
-    }
-
-    protected function setCurrentUser()
-    {
-        if ($user_array = $this->Auth->identify()) {
-            $this->currentUser = TableRegistry::getTableLocator()
-                ->get('Users')
-                ->get($user_array['id']);
-        }
     }
 }

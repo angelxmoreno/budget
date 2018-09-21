@@ -17,6 +17,9 @@
                 <?= $this->Html->activeLiLink(__('Banks'),
                     ['plugin' => null, 'controller' => 'Banks', 'action' => 'index']) ?>
 
+                <?= $this->Html->activeLiLink(__('Accounts'),
+                    ['plugin' => null, 'controller' => 'Accounts', 'action' => 'index']) ?>
+
                 <?= $this->Html->activeLiLink(__('Transactions'),
                     ['plugin' => null, 'controller' => 'Transactions', 'action' => 'index']) ?>
 

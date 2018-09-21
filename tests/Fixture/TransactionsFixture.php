@@ -50,16 +50,16 @@ class TransactionsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '3140a6e5-726e-4732-88a4-123c7abce297',
+                'id' => 'c21ff8c9-1b90-43ae-978e-78d176b9eddf',
                 'account_id' => 1,
                 'user_id' => 1,
                 'amount' => 1.5,
-                'posted' => '2018-09-21 03:17:46',
+                'posted' => '2018-09-21 03:24:56',
                 'type' => 'Lorem ipsum dolor sit amet',
                 'subtype' => 'Lorem ipsum dolor sit amet',
                 'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'created' => '2018-09-21 03:17:46',
-                'modified' => '2018-09-21 03:17:46'
+                'created' => '2018-09-21 03:24:56',
+                'modified' => '2018-09-21 03:24:56'
             ],
         ];
         parent::init();

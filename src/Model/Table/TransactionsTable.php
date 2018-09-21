@@ -1,4 +1,5 @@
 <?php
+
 namespace Axm\Budget\Model\Table;
 
 use Cake\ORM;
@@ -54,10 +55,11 @@ class TransactionsTable extends TableBase
             'skip_fields' => [
                 'id',
                 'user_id',
-                'bank_id',
+                'account_id',
                 'created',
                 'modified'
             ]
+        ]);
         $this->belongsToMany('Tags', [
             'foreignKey' => 'transaction_id',
             'targetForeignKey' => 'tag_id',

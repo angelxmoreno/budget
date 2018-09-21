@@ -57,8 +57,8 @@ class ImportController extends AppController
         $csv_fields = array_combine($headers, $headers);
         $table_fields = $this->Transactions->getCsvFields();
 
-        $banks = $this->Transactions->Banks->find('list', ['limit' => 200]);
-        $this->set(compact('csv_fields', 'table_fields', 'banks'));
+        $accounts = $this->Transactions->Accounts->find('list', ['limit' => 200]);
+        $this->set(compact('csv_fields', 'table_fields', 'accounts'));
     }
 
     /**

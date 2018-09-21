@@ -1,12 +1,13 @@
 <?php
 /* @var $this \Cake\View\View */
+
 use Cake\Core\Configure;
 
 $this->Html->css('BootstrapUI.cover', ['block' => true]);
 $this->prepend('tb_body_attrs', ' class="' . implode(' ', [$this->request->controller, $this->request->action]) . '" ');
 $this->start('tb_body_start');
 ?>
-<body <?= $this->fetch('tb_body_attrs') ?>>
+    <body <?= $this->fetch('tb_body_attrs') ?>>
     <div class="site-wrapper">
         <div class="site-wrapper-inner">
             <div class="cover-container">
@@ -19,29 +20,31 @@ $this->start('tb_body_start');
                 </div>
 
                 <div class="inner cover">
-<?php
-/**
- * Default `flash` block.
- */
-if (!$this->fetch('tb_flash')) {
-    $this->start('tb_flash');
-    if (isset($this->Flash))
-        echo $this->Flash->render();
-    $this->end();
-}
-$this->end();
+                    <?php
+                    /**
+                     * Default `flash` block.
+                     */
+                    if (!$this->fetch('tb_flash')) {
+                        $this->start('tb_flash');
+                        if (isset($this->Flash)) {
+                            echo $this->Flash->render();
+                        }
+                        $this->end();
+                    }
+                    $this->end();
 
-$this->start('tb_body_end');
-?>
+                    $this->start('tb_body_end');
+                    ?>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 <?php
 $this->end();
 
 $this->start('tb_footer');
-printf('<footer class="mastfoot"><div class="inner">&copy;%s %s</div></footer>', date('Y'), Configure::read('App.title'));
+printf('<footer class="mastfoot"><div class="inner">&copy;%s %s</div></footer>', date('Y'),
+    Configure::read('App.title'));
 $this->end('tb_footer');
 
 $this->append('content', '</div>');

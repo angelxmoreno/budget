@@ -5,36 +5,36 @@ $this->extend('/Base/dashboard');
 $this->start('tb_actions');
 ?>
 <?= $this->Html->link(__('Edit Tag'),
-    ['action' => 'edit',$tag->id],
-    ['class'=>'list-group-item']
+    ['action' => 'edit', $tag->id],
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Form->postLink(__('Delete Tag'),
-    ['action' => 'delete',$tag->id],
-    ['confirm' => __('Are you sure you want to delete # {0}?', $tag->id),'class'=>'list-group-item']
+    ['action' => 'delete', $tag->id],
+    ['confirm' => __('Are you sure you want to delete # {0}?', $tag->id), 'class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('List Tags'),
     ['action' => 'index'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('New Tag'),
     ['action' => 'add'],
-    ['class'=>'list-group-item']
- ) ?>
+    ['class' => 'list-group-item']
+) ?>
 <?= $this->Html->link(__('List Parent Tags'),
     ['controller' => 'Tags', 'action' => 'index'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('New Parent Tag'),
     ['controller' => 'Tags', 'action' => 'add'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('List Transactions'),
     ['controller' => 'Transactions', 'action' => 'index'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?= $this->Html->link(__('New Transaction'),
     ['controller' => 'Transactions', 'action' => 'add'],
-    ['class'=>'list-group-item']
+    ['class' => 'list-group-item']
 ) ?>
 <?php
 $this->end();
@@ -42,38 +42,38 @@ $this->end();
 $this->start('tb_sidebar');
 ?>
 <ul class="nav nav-sidebar">
-<?= $this->Html->link(__('Edit Tag'),
-    ['action' => 'edit',$tag->id],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Form->postLink(__('Delete Tag'),
-    ['action' => 'delete',$tag->id],
-    ['confirm' => __('Are you sure you want to delete # {0}?', $tag->id),'class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('List Tags'),
-    ['action' => 'index'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('New Tag'),
-    ['action' => 'add'],
-    ['class'=>'list-group-item']
- ) ?>
-<?= $this->Html->link(__('List Parent Tags'),
-    ['controller' => 'Tags', 'action' => 'index'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('New Parent Tag'),
-    ['controller' => 'Tags', 'action' => 'add'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('List Transactions'),
-    ['controller' => 'Transactions', 'action' => 'index'],
-    ['class'=>'list-group-item']
-) ?>
-<?= $this->Html->link(__('New Transaction'),
-    ['controller' => 'Transactions', 'action' => 'add'],
-    ['class'=>'list-group-item']
-) ?>
+    <?= $this->Html->link(__('Edit Tag'),
+        ['action' => 'edit', $tag->id],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Form->postLink(__('Delete Tag'),
+        ['action' => 'delete', $tag->id],
+        ['confirm' => __('Are you sure you want to delete # {0}?', $tag->id), 'class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('List Tags'),
+        ['action' => 'index'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('New Tag'),
+        ['action' => 'add'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('List Parent Tags'),
+        ['controller' => 'Tags', 'action' => 'index'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('New Parent Tag'),
+        ['controller' => 'Tags', 'action' => 'add'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('List Transactions'),
+        ['controller' => 'Transactions', 'action' => 'index'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('New Transaction'),
+        ['controller' => 'Transactions', 'action' => 'add'],
+        ['class' => 'list-group-item']
+    ) ?>
 </ul>
 <?php
 $this->end();
@@ -94,7 +94,8 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Parent Tag') ?></td>
-            <td><?= $tag->has('parent_tag') ? $this->Html->link($tag->parent_tag->name, ['controller' => 'Tags', 'action' => 'view', $tag->parent_tag->id]) : '' ?></td>
+            <td><?= $tag->has('parent_tag') ? $this->Html->link($tag->parent_tag->name,
+                    ['controller' => 'Tags', 'action' => 'view', $tag->parent_tag->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Id') ?></td>
@@ -151,9 +152,15 @@ $this->end();
                     <td><?= h($childTags->created) ?></td>
                     <td><?= h($childTags->modified) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link('', ['controller' => 'Tags', 'action' => 'view', $childTags->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                        <?= $this->Html->link('', ['controller' => 'Tags', 'action' => 'edit', $childTags->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                        <?= $this->Form->postLink('', ['controller' => 'Tags', 'action' => 'delete', $childTags->id], ['confirm' => __('Are you sure you want to delete # {0}?', $childTags->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
+                        <?= $this->Html->link('', ['controller' => 'Tags', 'action' => 'view', $childTags->id],
+                            ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                        <?= $this->Html->link('', ['controller' => 'Tags', 'action' => 'edit', $childTags->id],
+                            ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                        <?= $this->Form->postLink('', ['controller' => 'Tags', 'action' => 'delete', $childTags->id], [
+                            'confirm' => __('Are you sure you want to delete # {0}?', $childTags->id),
+                            'title' => __('Delete'),
+                            'class' => 'btn btn-default glyphicon glyphicon-trash'
+                        ]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -199,9 +206,18 @@ $this->end();
                     <td><?= h($transactions->created) ?></td>
                     <td><?= h($transactions->modified) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link('', ['controller' => 'Transactions', 'action' => 'view', $transactions->id], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                        <?= $this->Html->link('', ['controller' => 'Transactions', 'action' => 'edit', $transactions->id], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                        <?= $this->Form->postLink('', ['controller' => 'Transactions', 'action' => 'delete', $transactions->id], ['confirm' => __('Are you sure you want to delete # {0}?', $transactions->id), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
+                        <?= $this->Html->link('',
+                            ['controller' => 'Transactions', 'action' => 'view', $transactions->id],
+                            ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                        <?= $this->Html->link('',
+                            ['controller' => 'Transactions', 'action' => 'edit', $transactions->id],
+                            ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                        <?= $this->Form->postLink('',
+                            ['controller' => 'Transactions', 'action' => 'delete', $transactions->id], [
+                                'confirm' => __('Are you sure you want to delete # {0}?', $transactions->id),
+                                'title' => __('Delete'),
+                                'class' => 'btn btn-default glyphicon glyphicon-trash'
+                            ]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

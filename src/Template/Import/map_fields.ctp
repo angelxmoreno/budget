@@ -2,7 +2,7 @@
 /**
  * @var \Axm\Budget\View\AppView $this
  * @var \Axm\Budget\Model\Entity\Transaction $transaction
- * @var array $banks
+ * @var array $accounts
  * @var array $table_fields
  * @var array $csv_fields
  */
@@ -35,9 +35,9 @@ $this->end();
         <?= $this->Html->tableHeaders(['CSV Fields', '', 'Table Fields']) ?>
 
         <tr>
-            <td><?= $this->Form->select('bank_id', $banks) ?></td>
+            <td><?= $this->Form->select('account_id', $accounts) ?></td>
             <td>===></td>
-            <td>Bank (string)</td>
+            <td>Account (string)</td>
         </tr>
 
         <? foreach ($table_fields as $field => $type): ?>

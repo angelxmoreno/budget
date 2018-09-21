@@ -36,6 +36,14 @@ $this->start('tb_actions');
     ['controller' => 'Users', 'action' => 'add'],
     ['class' => 'list-group-item']
 ) ?>
+<?= $this->Html->link(__('List Tags'),
+    ['controller' => 'Tags', 'action' => 'index'],
+    ['class' => 'list-group-item']
+) ?>
+<?= $this->Html->link(__('New Tag'),
+    ['controller' => 'Tags', 'action' => 'add'],
+    ['class' => 'list-group-item']
+) ?>
 <?php
 $this->end();
 
@@ -72,6 +80,14 @@ $this->start('tb_sidebar');
     ) ?>
     <?= $this->Html->link(__('New User'),
         ['controller' => 'Users', 'action' => 'add'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('List Tags'),
+        ['controller' => 'Tags', 'action' => 'index'],
+        ['class' => 'list-group-item']
+    ) ?>
+    <?= $this->Html->link(__('New Tag'),
+        ['controller' => 'Tags', 'action' => 'add'],
         ['class' => 'list-group-item']
     ) ?>
 </ul>
@@ -129,3 +145,53 @@ $this->end();
     </table>
 </div>
 
+<div class="panel panel-default">
+    <!-- Panel header -->
+    <div class="panel-heading">
+        <h3 class="panel-title"><?= __('Tags') ?></h3>
+    </div>
+    <?php if (!empty($transaction->tags)): ?>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><?= __('Id') ?></th>
+                <th><?= __('Name') ?></th>
+                <th><?= __('Slug') ?></th>
+                <th><?= __('Parent Id') ?></th>
+                <th><?= __('Lft') ?></th>
+                <th><?= __('Rght') ?></th>
+                <th><?= __('Created') ?></th>
+                <th><?= __('Modified') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($transaction->tags as $tags): ?>
+                <tr>
+                    <td><?= h($tags->id) ?></td>
+                    <td><?= h($tags->name) ?></td>
+                    <td><?= h($tags->slug) ?></td>
+                    <td><?= h($tags->parent_id) ?></td>
+                    <td><?= h($tags->lft) ?></td>
+                    <td><?= h($tags->rght) ?></td>
+                    <td><?= h($tags->created) ?></td>
+                    <td><?= h($tags->modified) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link('', ['controller' => 'Tags', 'action' => 'view', $tags->id],
+                            ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
+                        <?= $this->Html->link('', ['controller' => 'Tags', 'action' => 'edit', $tags->id],
+                            ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
+                        <?= $this->Form->postLink('', ['controller' => 'Tags', 'action' => 'delete', $tags->id], [
+                            'confirm' => __('Are you sure you want to delete # {0}?', $tags->id),
+                            'title' => __('Delete'),
+                            'class' => 'btn btn-default glyphicon glyphicon-trash'
+                        ]) ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p class="panel-body">no Tags</p>
+    <?php endif; ?>
+</div>

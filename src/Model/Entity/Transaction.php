@@ -1,5 +1,4 @@
 <?php
-
 namespace Axm\Budget\Model\Entity;
 
 /**
@@ -18,6 +17,7 @@ namespace Axm\Budget\Model\Entity;
  *
  * @property \Axm\Budget\Model\Entity\Account $account
  * @property \Axm\Budget\Model\Entity\User $user
+ * @property \Axm\Budget\Model\Entity\Tag[] $tags
  */
 class Transaction extends EntityBase
 {

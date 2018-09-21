@@ -1,22 +1,22 @@
 <?php
 namespace Axm\Budget\Test\TestCase\Model\Table;
 
-use Axm\Budget\Model\Table\TransactionsTable;
+use Axm\Budget\Model\Table\TagsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * Axm\Budget\Model\Table\TransactionsTable Test Case
+ * Axm\Budget\Model\Table\TagsTable Test Case
  */
-class TransactionsTableTest extends TestCase
+class TagsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \Axm\Budget\Model\Table\TransactionsTable
+     * @var \Axm\Budget\Model\Table\TagsTable
      */
-    public $Transactions;
+    public $Tags;
 
     /**
      * Fixtures
@@ -24,10 +24,8 @@ class TransactionsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.transactions',
-        'app.accounts',
-        'app.users',
-        'app.tags'
+        'app.tags',
+        'app.transactions'
     ];
 
     /**
@@ -38,8 +36,8 @@ class TransactionsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Transactions') ? [] : ['className' => TransactionsTable::class];
-        $this->Transactions = TableRegistry::getTableLocator()->get('Transactions', $config);
+        $config = TableRegistry::getTableLocator()->exists('Tags') ? [] : ['className' => TagsTable::class];
+        $this->Tags = TableRegistry::getTableLocator()->get('Tags', $config);
     }
 
     /**
@@ -49,7 +47,7 @@ class TransactionsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Transactions);
+        unset($this->Tags);
 
         parent::tearDown();
     }

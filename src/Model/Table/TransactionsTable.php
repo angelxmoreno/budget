@@ -1,5 +1,4 @@
 <?php
-
 namespace Axm\Budget\Model\Table;
 
 use Cake\ORM;
@@ -10,6 +9,7 @@ use Cake\Validation\Validator;
  *
  * @property \Axm\Budget\Model\Table\AccountsTable|\Cake\ORM\Association\BelongsTo $Accounts
  * @property \Axm\Budget\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
+ * @property \Axm\Budget\Model\Table\TagsTable|\Cake\ORM\Association\BelongsToMany $Tags
  *
  * @method \Axm\Budget\Model\Entity\Transaction get($primaryKey, $options = [])
  * @method \Axm\Budget\Model\Entity\Transaction newEntity($data = null, array $options = [])
@@ -58,6 +58,10 @@ class TransactionsTable extends TableBase
                 'created',
                 'modified'
             ]
+        $this->belongsToMany('Tags', [
+            'foreignKey' => 'transaction_id',
+            'targetForeignKey' => 'tag_id',
+            'joinTable' => 'tags_transactions'
         ]);
     }
 
@@ -71,8 +75,7 @@ class TransactionsTable extends TableBase
     {
         $validator
             ->uuid('id')
-            ->requirePresence('id', 'create')
-            ->notEmpty('id');
+            ->allowEmpty('id', 'create');
 
         $validator
             ->decimal('amount')

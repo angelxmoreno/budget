@@ -1,13 +1,13 @@
 <?php
 namespace Axm\Budget\Test\TestCase\Controller;
 
-use Axm\Budget\Controller\TransactionsController;
+use Axm\Budget\Controller\TagsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * Axm\Budget\Controller\TransactionsController Test Case
+ * Axm\Budget\Controller\TagsController Test Case
  */
-class TransactionsControllerTest extends IntegrationTestCase
+class TagsControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,10 +16,8 @@ class TransactionsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.transactions',
-        'app.accounts',
-        'app.users',
         'app.tags',
+        'app.transactions',
         'app.tags_transactions'
     ];
 

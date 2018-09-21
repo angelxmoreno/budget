@@ -31,6 +31,10 @@ $this->Form->postLink(
 
 <?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add'], ['class' => 'list-group-item']) ?>
 
+<?= $this->Html->link(__('List Tags'), ['controller' => 'Tags', 'action' => 'index'], ['class' => 'list-group-item']) ?>
+
+<?= $this->Html->link(__('New Tag'), ['controller' => 'Tags', 'action' => 'add'], ['class' => 'list-group-item']) ?>
+
 <?php
 $this->end();
 ?>
@@ -45,6 +49,7 @@ $this->end();
     echo $this->Form->control('type');
     echo $this->Form->control('subtype');
     echo $this->Form->control('description');
+    echo $this->Form->control('tags._ids', ['options' => $tags]);
     ?>
 </fieldset>
 <?= $this->Form->button(__("Save")); ?>

@@ -1,5 +1,4 @@
 <?php
-
 namespace Axm\Budget\Controller;
 
 use Axm\Budget\Model\Entity;
@@ -40,7 +39,7 @@ class TransactionsController extends AppController
     public function view($id = null)
     {
         $transaction = $this->Transactions->get($id, [
-            'contain' => ['Accounts', 'Users']
+            'contain' => ['Accounts', 'Users', 'Tags']
         ]);
 
         $this->set('transaction', $transaction);
@@ -64,7 +63,8 @@ class TransactionsController extends AppController
         }
         $accounts = $this->Transactions->Accounts->find('list', ['limit' => 200]);
         $users = $this->Transactions->Users->find('list', ['limit' => 200]);
-        $this->set(compact('transaction', 'accounts', 'users'));
+        $tags = $this->Transactions->Tags->find('list', ['limit' => 200]);
+        $this->set(compact('transaction', 'accounts', 'users', 'tags'));
     }
 
     /**
@@ -76,7 +76,7 @@ class TransactionsController extends AppController
     public function edit($id = null)
     {
         $transaction = $this->Transactions->get($id, [
-            'contain' => []
+            'contain' => ['Tags']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $transaction = $this->Transactions->patchEntity($transaction, $this->request->getData());
@@ -89,7 +89,8 @@ class TransactionsController extends AppController
         }
         $accounts = $this->Transactions->Accounts->find('list', ['limit' => 200]);
         $users = $this->Transactions->Users->find('list', ['limit' => 200]);
-        $this->set(compact('transaction', 'accounts', 'users'));
+        $tags = $this->Transactions->Tags->find('list', ['limit' => 200]);
+        $this->set(compact('transaction', 'accounts', 'users', 'tags'));
     }
 
     /**

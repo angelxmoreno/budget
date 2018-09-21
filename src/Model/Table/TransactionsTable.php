@@ -2,6 +2,7 @@
 
 namespace Axm\Budget\Model\Table;
 
+use Axm\Budget\Model\Entity\Transaction;
 use Cake\ORM;
 use Cake\Validation\Validator;
 

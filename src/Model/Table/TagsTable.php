@@ -41,7 +41,6 @@ class TagsTable extends TableBase
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
         $this->addBehavior('Tree');
         $this->addBehavior('Muffin/Slug.Slug');
 

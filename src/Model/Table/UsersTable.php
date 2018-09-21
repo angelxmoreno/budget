@@ -38,8 +38,6 @@ class UsersTable extends TableBase
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
-
         $this->hasMany('Accounts', [
             'foreignKey' => 'user_id'
         ]);

@@ -40,8 +40,6 @@ class AccountsTable extends TableBase
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
-
         $this->belongsTo('Banks', [
             'foreignKey' => 'bank_id',
             'joinType' => 'INNER'

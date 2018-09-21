@@ -17,8 +17,6 @@ class AuthController extends AppController
     {
         parent::initialize();
 
-        $this->loadModel('Auth.Auths');
-
         $this->Auth->allow(['register', 'login']);
     }
 

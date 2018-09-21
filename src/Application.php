@@ -36,15 +36,12 @@ class Application extends BaseApplication
      */
     public function bootstrap()
     {
-        $this->addPlugin('Muffin/Footprint');
-
         $this->addPlugin('Muffin/Trash');
-
         $this->addPlugin('Muffin/Slug');
-
         $this->addPlugin('BootstrapUI');
-
         $this->addPlugin('Migrations');
+        $this->addPlugin('Auth');
+        $this->addPlugin('ImportCsv');
 
         // Call parent to load bootstrap from files.
         parent::bootstrap();

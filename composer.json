@@ -19,7 +19,6 @@
         "josegonzalez/dotenv": "3.*",
         "league/csv": "^9.1",
         "mobiledetect/mobiledetectlib": "2.*",
-        "muffin/footprint": "^1.2",
         "muffin/slug": "^1.4",
         "muffin/trash": "^2.1",
         "rakshazi/get-set-trait": "^1.0",

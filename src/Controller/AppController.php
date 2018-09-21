@@ -16,7 +16,6 @@
 namespace Axm\Budget\Controller;
 
 use Cake\Controller\Controller;
-use Muffin\Footprint\Auth\FootprintAwareTrait;
 
 /**
  * Application Controller
@@ -29,8 +28,6 @@ use Muffin\Footprint\Auth\FootprintAwareTrait;
  */
 class AppController extends Controller
 {
-    use FootprintAwareTrait;
-
     /**
      * Initialization hook method.
      *
@@ -47,7 +44,6 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
         ]);
-        $this->_userModel = 'Auth.Auths';
         $this->loadComponent('Security');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth.Auth');

@@ -41,7 +41,6 @@ class TransactionsTable extends TableBase
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash', [
             'field' => 'deleted'
         ]);

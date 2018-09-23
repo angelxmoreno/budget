@@ -45,8 +45,8 @@ class BanksFixture extends TestFixture
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'url' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'created' => '2018-09-21 03:03:57',
-                'modified' => '2018-09-21 03:03:57'
+                'created' => '2018-09-23 08:03:47',
+                'modified' => '2018-09-23 08:03:47'
             ],
         ];
         parent::init();

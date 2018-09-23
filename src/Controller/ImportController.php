@@ -84,6 +84,13 @@ class ImportController extends AppController
             }
             $transaction = new Entity\Transaction($data);
             $transaction->id = $this->Transactions->createUuid($transaction);
+
+            if($this->Transactions->exists([
+                'Transactions.id' => $transaction->id
+            ])){
+                $transaction->isNew(false);
+            }
+
             $transactions[] = $transaction;
         }
 

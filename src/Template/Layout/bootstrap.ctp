@@ -26,7 +26,7 @@
     ]) ?>
     <?= $this->fetch('css') ?>
     <?= $this->Html->css([
-        'styles',
+        'css',
     ]) ?>
 
     <?= $this->fetch('meta') ?>

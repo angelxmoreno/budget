@@ -86,7 +86,7 @@ $this->end();
     </div>
     <?php if (!empty($bank->accounts)): ?>
         <? $accounts = $bank->accounts ?>
-        <?= $this->element('lists/accounts', ['accounts' => $bank->accounts]) ?>
+        <?= $this->element('lists/accounts', ['accounts' => $bank->accounts, 'bank_view' => true]) ?>
     <?php else: ?>
         <p class="panel-body">no Accounts</p>
     <?php endif; ?>

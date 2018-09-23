@@ -10,11 +10,22 @@ use Cake\Datasource\ResultSetInterface;
  * Accounts Controller
  *
  * @property Table\AccountsTable $Accounts
+ * @property Table\TransactionsTable $Transactions
  *
  * @method Entity\Account[]|ResultSetInterface paginate($object = null, array $settings = [])
  */
 class AccountsController extends AppController
 {
+    public $paginate = [
+        'Accounts' => ['scope' => 'accounts'],
+        'Transactions' => ['scope' => 'transactions'],
+    ];
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadModel('Transactions');
+    }
 
     /**
      * Index method
@@ -24,8 +35,10 @@ class AccountsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'conditions' => ['Accounts.user_id' => $this->Auth->user('id')],
-            'contain' => ['Banks', 'Users']
+            'Accounts' => [
+                'conditions' => ['Accounts.user_id' => $this->Auth->user('id')],
+                'contain' => ['Banks']
+            ]
         ];
         $accounts = $this->paginate($this->Accounts);
 
@@ -42,8 +55,18 @@ class AccountsController extends AppController
     {
         $account = $this->Accounts->get($id, [
             'conditions' => ['Accounts.user_id' => $this->Auth->user('id')],
-            'contain' => ['Banks', 'Users', 'Transactions']
+            'contain' => ['Banks']
         ]);
+
+        $this->paginate = [
+            'Transactions' => [
+                'conditions' => [
+                    'Transactions.user_id' => $this->Auth->user('id')
+                ],
+            ]
+        ];
+
+        $account->transactions = $this->paginate($this->Transactions);
 
         $this->set('account', $account);
     }

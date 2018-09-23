@@ -17,11 +17,4 @@ $this->start('tb_sidebar');
 <?php $this->end(); ?>
 
 <?= $this->element('lists/accounts') ?>
-<div class="paginator">
-    <ul class="pagination">
-        <?= $this->Paginator->prev('< ' . __('previous')) ?>
-        <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
-        <?= $this->Paginator->next(__('next') . ' >') ?>
-    </ul>
-    <p><?= $this->Paginator->counter() ?></p>
-</div>
+<?= $this->element('paginator') ?>

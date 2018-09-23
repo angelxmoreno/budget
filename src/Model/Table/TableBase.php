@@ -2,6 +2,7 @@
 
 namespace Axm\Budget\Model\Table;
 
+use Auth\Model\Entity\Auth;
 use Cake\Cache\Cache;
 use Cake\ORM\Query;
 use Cake\ORM\Table;
@@ -10,6 +11,8 @@ use Cake\Utility\Hash;
 /**
  * Class TableBase
  * @package Axm\Budget\Model\Table
+ *
+ * @method Auth getAuthUser()
  */
 abstract class TableBase extends Table
 {

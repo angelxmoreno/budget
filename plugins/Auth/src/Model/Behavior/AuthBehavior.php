@@ -28,6 +28,10 @@ class AuthBehavior extends Behavior
      */
     public function getAuthUser()
     {
+        if (!$this->AuthUser) {
+            throw new \UnexpectedValueException('AuthUser has not been previously set');
+        }
+
         return $this->AuthUser;
     }
 

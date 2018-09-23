@@ -43,8 +43,9 @@ class AuthComponent extends BaseAuthComponent
         'checkAuthIn' => 'Controller.initialize',
     ];
 
-    public function startup(Event $event)
+    public function initialize(array $config)
     {
+        parent::initialize($config);
         EventManager::instance()->on('Model.initialize', [$this, 'setAuthUserInModel']);
     }
 

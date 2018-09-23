@@ -2,7 +2,7 @@
 
 namespace BernardCake\Command;
 
-use Bernard\Message\DefaultMessage;
+use BernardCake\BernardCakeMessageAware;
 use BernardCake\Loader\ConfigLoader;
 use Cake\Console\Arguments;
 use Cake\Console\Command;
@@ -14,16 +14,7 @@ use Cake\Console\ConsoleOptionParser;
  */
 class ProduceCommand extends Command
 {
-    /**
-     * @var ConfigLoader
-     */
-    protected $loader;
-
-    public function initialize()
-    {
-        parent::initialize();
-        $this->loader = new ConfigLoader();
-    }
+    use BernardCakeMessageAware;
 
     /**
      * Hook method for defining this command's option parser.
@@ -36,6 +27,19 @@ class ProduceCommand extends Command
     public function buildOptionParser(ConsoleOptionParser $parser)
     {
         $parser = parent::buildOptionParser($parser);
+        $parser->addArgument('message_name', [
+            'required' => true,
+            'help' => 'The message name (Queue name)',
+            'choices' => $this->getBernardCakeLoader()->getKnownQueues()
+        ]);
+
+        $parser->addOption('query_string', [
+            'help' => 'A query string use as the data array for the message',
+            'short' => 'd',
+            'default' => 'hello=world&foo=bar',
+            'boolean' => false,
+            'multiple' => false
+        ]);
 
         return $parser;
     }
@@ -48,10 +52,10 @@ class ProduceCommand extends Command
      */
     public function execute(Arguments $args, ConsoleIo $io)
     {
-        $producer = $this->loader->getProducer();
+        $message_name = $args->getArgument('message_name');
+        $query_string = $args->getOption('query_string');
+        parse_str($query_string, $data);
 
-        $producer->produce(new DefaultMessage('EchoTime', array(
-            'time' => time(),
-        )));
+        $this->pushMessage($message_name, $data);
     }
 }

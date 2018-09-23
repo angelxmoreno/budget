@@ -3,14 +3,11 @@
 namespace BernardCake\Command;
 
 use BernardCake\Loader\ConfigLoader;
-use Bernard\Consumer;
-use Bernard\Middleware;
-use BernardCake\Router\WorkerRouter;
-use BernardCake\Worker\EchoWorker;
 use Cake\Console\Arguments;
 use Cake\Console\Command;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
+use Cake\Utility\Inflector;
 
 /**
  * Class ConsumeCakeCommand
@@ -40,7 +37,11 @@ class ConsumeCakeCommand extends Command
     public function buildOptionParser(ConsoleOptionParser $parser)
     {
         $parser = parent::buildOptionParser($parser);
-
+        $parser->addArgument('queue', [
+            'required' => true,
+            'help' => 'The Queue name',
+            'choices' => $this->loader->getKnownQueues()
+        ]);
         return $parser;
     }
 
@@ -52,16 +53,9 @@ class ConsumeCakeCommand extends Command
      */
     public function execute(Arguments $args, ConsoleIo $io)
     {
-        $router = new WorkerRouter();
-        $router->add('EchoTime', EchoWorker::class);
-
+        $queue_name = Inflector::dasherize($args->getArgument('queue'));
         $queues = $this->loader->getQueueFactory();
-
-        $consumer_middleware = new Middleware\MiddlewareBuilder;
-        $consumer_middleware->push(new Middleware\ErrorLogFactory);
-        $consumer_middleware->push(new Middleware\FailuresFactory($queues));
-
-        $consumer = new Consumer($router, $consumer_middleware);
-        $consumer->consume($queues->create('echo-time'));
+        $consumer = $this->loader->getConsumer();
+        $consumer->consume($queues->create($queue_name));
     }
 }

@@ -2,12 +2,15 @@
 
 namespace BernardCake\Loader;
 
-use BernardCake\Plugin;
+use Bernard\Consumer;
 use Bernard\Driver;
 use Bernard\Middleware\MiddlewareBuilder;
 use Bernard\Producer;
 use Bernard\QueueFactory;
+use Bernard\Router;
 use Bernard\Serializer;
+use BernardCake\Plugin;
+use BernardCake\Router\WorkerRouter;
 use Cake\Core\Configure;
 use Cake\Core\InstanceConfigTrait;
 use ReflectionException;
@@ -52,11 +55,34 @@ class ConfigLoader
     protected $producer;
 
     /**
+     * @var MiddlewareBuilder
+     */
+    protected $consumer_middleware;
+
+    /**
+     * @var Consumer
+     */
+    protected $consumer;
+
+    /**
+     * @var Router
+     */
+    protected $router;
+
+    /**
      * Loader constructor.
      */
     public function __construct()
     {
         $this->setConfig(Configure::read(Plugin::NAME));
+    }
+
+    /**
+     * @return array
+     */
+    public function getKnownQueues() : array
+    {
+        return array_keys($this->getConfig('routes'));
     }
 
     /**
@@ -138,6 +164,45 @@ class ConfigLoader
     }
 
     /**
+     * @return MiddlewareBuilder
+     * @throws ReflectionException
+     */
+    public function getConsumerMiddleware() : MiddlewareBuilder
+    {
+        if (!$this->consumer_middleware) {
+            $middleware_configs = $this->getConfig('consumer_middlewares');
+            $this->consumer_middleware = $this->buildMiddlewareCollection($middleware_configs);
+        }
+
+        return $this->consumer_middleware;
+    }
+
+    /**
+     * @return Consumer
+     * @throws ReflectionException
+     */
+    public function getConsumer() : Consumer
+    {
+        if (!$this->consumer) {
+            $this->consumer = new Consumer($this->getRouter(), $this->getConsumerMiddleware());
+        }
+
+        return $this->consumer;
+    }
+
+    /**
+     * @return Router
+     */
+    public function getRouter() : Router
+    {
+        if (!$this->router) {
+            $this->router = new WorkerRouter($this->getConfig('routes'));
+        }
+
+        return $this->router;
+    }
+
+    /**
      * @param string|array $class_name
      * @return object
      * @throws ReflectionException
@@ -147,7 +212,6 @@ class ConfigLoader
         if (is_array($class_name)) {
             $class = key($class_name);
             $params = current($class_name);
-
             foreach ($params as $index => $param) {
                 if (is_string($param) && preg_match('~::(get[^:]+)::~', $param, $matches)) {
                     $getter = $matches[1];

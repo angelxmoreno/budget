@@ -3,6 +3,7 @@
 namespace Axm\Budget\Model\Table;
 
 use Axm\Budget\Model\Entity\Transaction;
+use Cake\Event\Event;
 use Cake\ORM;
 use Cake\Validation\Validator;
 
@@ -60,13 +61,15 @@ class TransactionsTable extends TableBase
                 'user_id',
                 'account_id',
                 'created',
-                'modified'
+                'modified',
+                'deleted'
             ]
         ]);
         $this->belongsToMany('Tags', [
             'foreignKey' => 'transaction_id',
             'targetForeignKey' => 'tag_id',
-            'joinTable' => 'tags_transactions'
+            'joinTable' => 'tags_transactions',
+            'saveStrategy' => ORM\Association\BelongsToMany::SAVE_REPLACE
         ]);
     }
 
@@ -138,5 +141,38 @@ class TransactionsTable extends TableBase
             substr($md5, 20);
 
         return $uuid;
+    }
+
+    public function beforeSave(Event $event, Transaction $transaction)
+    {
+        $tag_names = $this->extractTagNames($transaction);
+        $transaction->tags = $this->Tags->buildTagsForUserId($tag_names, $this->getAuthUser()->id);
+    }
+
+    public function extractTagNames(Transaction $transaction)
+    {
+        $tag_names = [];
+
+        //type
+        if ($transaction->type) {
+            $tag_names[] = $transaction->type;
+        }
+
+        //subtype
+        if ($transaction->subtype) {
+            $tag_names[] = $transaction->subtype;
+        }
+
+        //description broken up
+        $description = $transaction->description;
+        $description_parts = explode(' ', $description);
+        foreach ($description_parts as $description_part) {
+            $word = trim($description_part);
+            if ($word !== '') {
+                $tag_names[] = $word;
+            }
+        }
+
+        return $tag_names;
     }
 }

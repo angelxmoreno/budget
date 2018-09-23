@@ -98,4 +98,22 @@ class TagsTable extends TableBase
 
         return $rules;
     }
+
+    public function buildTagsForUserId(array $tag_names, $user_id)
+    {
+        $parent_tag = $this->findOrCreate([
+            'name' => 'Root:' . $user_id
+        ]);
+
+        $tags = [];
+        foreach ($tag_names as $tag_name) {
+            $tags[] = $this->findOrCreate([
+                'name' => $tag_name,
+                'parent_id' => $parent_tag->id
+            ]);
+        }
+        array_unique($tags);
+
+        return $tags;
+    }
 }

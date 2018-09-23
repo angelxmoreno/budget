@@ -7,7 +7,7 @@ namespace Axm\Budget\Model\Entity;
  *
  * @property int $id
  * @property int $user_id
- * @property string $map
+ * @property array $map
  * @property string $file
  * @property int $rows
  * @property int $progress

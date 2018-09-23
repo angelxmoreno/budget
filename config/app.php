@@ -367,5 +367,11 @@ return [
      */
     'Session' => [
         'defaults' => 'php',
+    ],
+    'BernardCake' =>[
+        'routes' => [
+            'TransactionUpload' => \Axm\Budget\Worker\TransactionsUploadWorker::class,
+            'EchoTime' => \BernardCake\Worker\EchoWorker::class
+        ]
     ]
 ];

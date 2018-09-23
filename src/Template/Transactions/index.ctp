@@ -1,5 +1,8 @@
 <?php
-/* @var $this \Cake\View\View */
+/**
+ * @var $this \Cake\View\View
+ * @var $transactions \Axm\Budget\Model\Entity\Transaction[]
+ */
 $this->extend('/Base/dashboard');
 $this->start('tb_sidebar');
 ?>
@@ -16,41 +19,29 @@ $this->start('tb_sidebar');
 <?= $this->Html->link(__('New Tag'), ['controller' => 'Tags', 'action' => 'add'], ['class' => 'list-group-item']); ?>
 <?php $this->end(); ?>
 
-<table class="table table-striped" cellpadding="0" cellspacing="0">
+<table class="table table-striped table-condensed">
     <thead>
     <tr>
-        <th><?= $this->Paginator->sort('id'); ?></th>
         <th><?= $this->Paginator->sort('account_id'); ?></th>
-        <th><?= $this->Paginator->sort('amount'); ?></th>
         <th><?= $this->Paginator->sort('posted'); ?></th>
         <th><?= $this->Paginator->sort('type'); ?></th>
         <th><?= $this->Paginator->sort('subtype'); ?></th>
-        <th class="actions"><?= __('Actions'); ?></th>
+        <th><?= $this->Paginator->sort('description'); ?></th>
+        <th><?= $this->Paginator->sort('amount'); ?></th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($transactions as $transaction): ?>
         <tr>
-            <td><?= h($transaction->id) ?></td>
             <td>
                 <?= $transaction->has('account') ? $this->Html->link($transaction->account->name,
                     ['controller' => 'Accounts', 'action' => 'view', $transaction->account->id]) : '' ?>
             </td>
-            <td><?= $this->Number->format($transaction->amount) ?></td>
-            <td><?= h($transaction->posted) ?></td>
+            <td><?= $this->Time->format($transaction->posted, 'EEE LLL d, YYYY') ?></td>
             <td><?= h($transaction->type) ?></td>
             <td><?= h($transaction->subtype) ?></td>
-            <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $transaction->id],
-                    ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $transaction->id],
-                    ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $transaction->id], [
-                    'confirm' => __('Are you sure you want to delete # {0}?', $transaction->id),
-                    'title' => __('Delete'),
-                    'class' => 'btn btn-default glyphicon glyphicon-trash'
-                ]) ?>
-            </td>
+            <td><?= $this->Html->link($transaction->description, ['action' => 'view', $transaction->id]) ?></td>
+            <td><?= $this->Number->currency($transaction->amount) ?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>

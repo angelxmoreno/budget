@@ -4,6 +4,7 @@ namespace BernardCake\Worker;
 
 use Bernard\Envelope;
 use Bernard\Message\DefaultMessage;
+use Cake\Datasource\ModelAwareTrait;
 
 /**
  * Abstract Class WorkerBase
@@ -11,6 +12,8 @@ use Bernard\Message\DefaultMessage;
  */
 abstract class WorkerBase implements WorkerInterface
 {
+    use ModelAwareTrait;
+
     public function initialize(Envelope $envelope)
     {
     }

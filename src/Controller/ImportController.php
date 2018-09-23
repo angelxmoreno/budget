@@ -4,21 +4,28 @@ namespace Axm\Budget\Controller;
 
 use Axm\Budget\Model\Entity;
 use Axm\Budget\Model\Table;
+use BernardCake\BernardCakeMessageAware;
 use Cake\Chronos\Chronos;
+use Cake\Http\Exception\NotFoundException;
 use ImportCsv\Controller\Component\ImportCsvComponent;
 
 /**
  * Import Controller
  *
  * @property Table\TransactionsTable $Transactions
+ * @property Table\UploadsTable $Uploads
  * @property ImportCsvComponent $ImportCsv
  */
 class ImportController extends AppController
 {
+
+    use BernardCakeMessageAware;
+
     public function initialize()
     {
         parent::initialize();
         $this->loadModel('Transactions');
+        $this->loadModel('Uploads');
         $this->loadComponent('ImportCsv.ImportCsv');
         $this->viewBuilder()->setHelpers(['ImportCsv.ImportCsv']);
     }
@@ -66,66 +73,36 @@ class ImportController extends AppController
     /**
      * @param string $target_file
      * @throws \League\Csv\Exception
+     * @throws \ReflectionException
      */
     public function import(string $target_file)
     {
+        $file_path = $this->ImportCsv->getTargetPath() . $target_file;
+        if (!file_exists($file_path)) {
+            throw new NotFoundException();
+        }
+
         $field_map = $this->getRequest()->getQueryParams();
         $records = $this->ImportCsv->getRecords($target_file);
-        $transactions = [];
-        foreach ($records as $index => $record) {
-            $data = ['user_id' => $this->Auth->user('id')];
 
-            foreach ($field_map as $key => $val) {
-                $val = array_key_exists($val, $record)
-                    ? $record[$val]
-                    : $val;
+        $upload = new Entity\Upload();
+        $upload->user_id = $this->Auth->user('id');
+        $upload->map = $field_map;
+        $upload->file = $file_path;
+        $upload->rows = $records->count();
+        $upload->progress = 0;
+        $saved = $this->Uploads->save($upload);
 
-                $data[$key] = self::cast($this->Transactions->getFieldType($key), $val);
-            }
-            $transaction = new Entity\Transaction($data);
-            $transaction->id = $this->Transactions->createUuid($transaction);
-
-            if($this->Transactions->exists([
-                'Transactions.id' => $transaction->id
-            ])){
-                $transaction->isNew(false);
-            }
-
-            $transactions[] = $transaction;
-        }
-
-        if ($this->Transactions->saveMany($transactions)) {
-            $this->Flash->success(count($transactions) . ' transactions saved');
+        if (!$saved) {
+            $this->Flash->error('Could not save the Upload:' . print_r($upload->getErrors(), true));
         } else {
-            $this->Flash->error('Transaction were unable to be saved');
+            $this->Flash->success('Your upload has been successfully queued');
+
+            $this->pushMessage('TransactionUpload', [
+                'upload_id' => $upload->id
+            ]);
         }
 
-        $this->redirect(['controller' => 'Transactions', 'action' => 'index']);
-    }
-
-    protected static function cast(string $type, string $val)
-    {
-        switch ($type) {
-            case 'integer':
-                $val = (int)$val;
-                break;
-
-            case 'decimal':
-                $val = (float)$val;
-                break;
-
-            case 'datetime':
-                $val = Chronos::createFromTimestamp(strtotime($val));
-                break;
-
-            case 'string':
-            case 'text':
-                $val = (string)$val;
-                break;
-            default:
-                throw new \UnexpectedValueException("'$type' is an unknown cast type");
-        }
-
-        return $val;
+        $this->redirect(['controller' => 'Uploads', 'action' => 'index']);
     }
 }

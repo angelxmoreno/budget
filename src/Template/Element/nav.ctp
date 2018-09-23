@@ -26,6 +26,9 @@
                 <?= $this->Html->activeLiLink(__('Import'),
                     ['plugin' => null, 'controller' => 'Import', 'action' => 'index']) ?>
 
+                <?= $this->Html->activeLiLink(__('Uploads'),
+                    ['plugin' => null, 'controller' => 'Uploads', 'action' => 'index']) ?>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Dropdown <span class="caret"></span></a>

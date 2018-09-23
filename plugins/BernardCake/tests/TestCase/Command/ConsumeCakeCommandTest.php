@@ -1,11 +1,11 @@
 <?php
-namespace Axm\BernardCake\Test\TestCase\Command;
+namespace BernardCake\Test\TestCase\Command;
 
-use Axm\BernardCake\Command\ConsumeCakeCommand;
+use BernardCake\Command\ConsumeCakeCommand;
 use Cake\TestSuite\ConsoleIntegrationTestCase;
 
 /**
- * Axm\BernardCake\Command\ConsumeCakeCommand Test Case
+ * BernardCake\Command\ConsumeCakeCommand Test Case
  */
 class ConsumeCakeCommandTest extends ConsoleIntegrationTestCase
 {

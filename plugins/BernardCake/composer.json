@@ -1,5 +1,5 @@
 {
-    "name": "angelxmoreno/BernardCake",
+    "name": "angelxmoreno/cakephp-bernardcake",
     "description": "Bernard plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
@@ -11,12 +11,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Axm\\BernardCake\\": "src/"
+            "BernardCake\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Axm\\BernardCake\\Test\\": "tests/",
+            "BernardCake\\Test\\": "tests/",
             "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
         }
     }

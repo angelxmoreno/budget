@@ -2,21 +2,17 @@
 
 namespace BernardCake\Command;
 
+use Bernard\Message\DefaultMessage;
 use BernardCake\Loader\ConfigLoader;
-use Bernard\Consumer;
-use Bernard\Middleware;
-use BernardCake\Router\WorkerRouter;
-use BernardCake\Worker\EchoWorker;
 use Cake\Console\Arguments;
 use Cake\Console\Command;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
 
 /**
- * Class ConsumeCakeCommand
- * @package BernardCake\Command
+ * Produce command.
  */
-class ConsumeCakeCommand extends Command
+class ProduceCommand extends Command
 {
     /**
      * @var ConfigLoader
@@ -52,16 +48,10 @@ class ConsumeCakeCommand extends Command
      */
     public function execute(Arguments $args, ConsoleIo $io)
     {
-        $router = new WorkerRouter();
-        $router->add('EchoTime', EchoWorker::class);
+        $producer = $this->loader->getProducer();
 
-        $queues = $this->loader->getQueueFactory();
-
-        $consumer_middleware = new Middleware\MiddlewareBuilder;
-        $consumer_middleware->push(new Middleware\ErrorLogFactory);
-        $consumer_middleware->push(new Middleware\FailuresFactory($queues));
-
-        $consumer = new Consumer($router, $consumer_middleware);
-        $consumer->consume($queues->create('echo-time'));
+        $producer->produce(new DefaultMessage('EchoTime', array(
+            'time' => time(),
+        )));
     }
 }

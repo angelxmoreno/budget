@@ -4,13 +4,13 @@ use Bernard\Driver\PhpRedisDriver;
 use Bernard\QueueFactory\PersistentFactory;
 use Bernard\Serializer\SimpleSerializer;
 use Cake\Core\Configure;
-
+use BernardCake\Plugin;
 
 $redis = new \Redis();
 $redis->connect('redis');
 $redis->setOption(\Redis::OPT_PREFIX, 'bernard2:');
 
-Configure::write('Bernard', [
+Configure::write(Plugin::NAME, [
     /**
      * @todo would be great to have the driver auto choosen for us based on the protocol of a url similar to how
      * Cache works

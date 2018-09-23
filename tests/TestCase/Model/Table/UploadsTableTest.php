@@ -1,22 +1,22 @@
 <?php
 namespace Axm\Budget\Test\TestCase\Model\Table;
 
-use Axm\Budget\Model\Table\UsersTable;
+use Axm\Budget\Model\Table\UploadsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * Axm\Budget\Model\Table\UsersTable Test Case
+ * Axm\Budget\Model\Table\UploadsTable Test Case
  */
-class UsersTableTest extends TestCase
+class UploadsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \Axm\Budget\Model\Table\UsersTable
+     * @var \Axm\Budget\Model\Table\UploadsTable
      */
-    public $Users;
+    public $Uploads;
 
     /**
      * Fixtures
@@ -24,10 +24,8 @@ class UsersTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.users',
-        'app.accounts',
-        'app.transactions',
-        'app.uploads'
+        'app.uploads',
+        'app.users'
     ];
 
     /**
@@ -38,8 +36,8 @@ class UsersTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Users') ? [] : ['className' => UsersTable::class];
-        $this->Users = TableRegistry::getTableLocator()->get('Users', $config);
+        $config = TableRegistry::getTableLocator()->exists('Uploads') ? [] : ['className' => UploadsTable::class];
+        $this->Uploads = TableRegistry::getTableLocator()->get('Uploads', $config);
     }
 
     /**
@@ -49,7 +47,7 @@ class UsersTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Users);
+        unset($this->Uploads);
 
         parent::tearDown();
     }
@@ -70,6 +68,16 @@ class UsersTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

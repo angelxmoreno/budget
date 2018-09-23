@@ -3,18 +3,21 @@
 namespace Axm\Budget\Model\Entity;
 
 /**
- * User Entity
+ * Upload Entity
  *
  * @property int $id
- * @property string $name
+ * @property int $user_id
+ * @property string $map
+ * @property string $file
+ * @property int $rows
+ * @property int $progress
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ * @property \Cake\I18n\FrozenTime $completed
  *
- * @property \Axm\Budget\Model\Entity\Account[] $accounts
- * @property \Axm\Budget\Model\Entity\Transaction[] $transactions
- * @property \Axm\Budget\Model\Entity\Upload[] $uploads
+ * @property \Axm\Budget\Model\Entity\User $user
  */
-class User extends EntityBase
+class Upload extends EntityBase
 {
 
     /**
@@ -27,11 +30,14 @@ class User extends EntityBase
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
+        'user_id' => true,
+        'map' => true,
+        'file' => true,
+        'rows' => true,
+        'progress' => true,
         'created' => true,
         'modified' => true,
-        'accounts' => true,
-        'transactions' => true,
-        'uploads' => true
+        'completed' => true,
+        'user' => true
     ];
 }

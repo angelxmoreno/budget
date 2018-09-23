@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
  *
  * @property \Axm\Budget\Model\Table\AccountsTable|\Cake\ORM\Association\HasMany $Accounts
  * @property \Axm\Budget\Model\Table\TransactionsTable|\Cake\ORM\Association\HasMany $Transactions
+ * @property \Axm\Budget\Model\Table\UploadsTable|\Cake\ORM\Association\HasMany $Uploads
  *
  * @method \Axm\Budget\Model\Entity\User get($primaryKey, $options = [])
  * @method \Axm\Budget\Model\Entity\User newEntity($data = null, array $options = [])
@@ -42,6 +43,9 @@ class UsersTable extends TableBase
             'foreignKey' => 'user_id'
         ]);
         $this->hasMany('Transactions', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Uploads', [
             'foreignKey' => 'user_id'
         ]);
     }

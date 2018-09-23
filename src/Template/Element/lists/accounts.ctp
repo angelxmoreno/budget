@@ -31,11 +31,11 @@ $bank_view = isset($bank_view) ? $bank_view : false;
             <td><?= h($account->account_number) ?></td>
             <td><?= h($account->created) ?></td>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $account->id],
+                <?= $this->Html->link('', ['controller' => 'Accounts', 'action' => 'view', $account->id],
                     ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $account->id],
+                <?= $this->Html->link('', ['controller' => 'Accounts', 'action' => 'edit', $account->id],
                     ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $account->id], [
+                <?= $this->Form->postLink('', ['controller' => 'Accounts', 'action' => 'delete', $account->id], [
                     'confirm' => __('Are you sure you want to delete # {0}?', $account->id),
                     'title' => __('Delete'),
                     'class' => 'btn btn-default glyphicon glyphicon-trash'

@@ -31,7 +31,8 @@ $account_view = isset($account_view) ? $account_view : false;
             <td><?= $this->Time->format($transaction->posted, 'EEE LLL d, YYYY') ?></td>
             <td><?= h($transaction->type) ?></td>
             <td><?= h($transaction->subtype) ?></td>
-            <td><?= $this->Html->link($transaction->description, ['action' => 'view', $transaction->id]) ?></td>
+            <td><?= $this->Html->link($transaction->description,
+                    ['controller' => 'Transactions', 'action' => 'view', $transaction->id]) ?></td>
             <td><?= $this->Number->currency($transaction->amount) ?></td>
         </tr>
     <?php endforeach; ?>

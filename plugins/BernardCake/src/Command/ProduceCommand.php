@@ -3,7 +3,6 @@
 namespace BernardCake\Command;
 
 use BernardCake\BernardCakeMessageAware;
-use BernardCake\Loader\ConfigLoader;
 use Cake\Console\Arguments;
 use Cake\Console\Command;
 use Cake\Console\ConsoleIo;

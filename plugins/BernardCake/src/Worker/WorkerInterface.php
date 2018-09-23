@@ -11,5 +11,6 @@ use Bernard\Message\DefaultMessage;
 interface WorkerInterface
 {
     public function run(DefaultMessage $message);
+
     public function execute(DefaultMessage $message);
 }

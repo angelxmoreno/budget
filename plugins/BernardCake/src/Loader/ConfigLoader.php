@@ -86,29 +86,16 @@ class ConfigLoader
     }
 
     /**
-     * @return Driver
+     * @return Producer
      * @throws ReflectionException
      */
-    public function getDriver() : Driver
+    public function getProducer() : Producer
     {
-        if (!$this->driver) {
-            $this->driver = $this->instance($this->getConfig('driver'));
+        if (!$this->producer) {
+            $this->producer = new Producer($this->getQueueFactory(), $this->getProducerMiddleware());
         }
 
-        return $this->driver;
-    }
-
-    /**
-     * @return Serializer
-     * @throws ReflectionException
-     */
-    public function getSerializer() : Serializer
-    {
-        if (!$this->serializer) {
-            $this->serializer = $this->instance($this->getConfig('serializer'));
-        }
-
-        return $this->serializer;
+        return $this->producer;
     }
 
     /**
@@ -137,69 +124,16 @@ class ConfigLoader
     }
 
     /**
-     * @return MiddlewareBuilder
+     * @return Driver
      * @throws ReflectionException
      */
-    public function getProducerMiddleware() : MiddlewareBuilder
+    public function getDriver() : Driver
     {
-        if (!$this->producer_middleware) {
-            $middleware_configs = $this->getConfig('producer_middlewares');
-            $this->producer_middleware = $this->buildMiddlewareCollection($middleware_configs);
+        if (!$this->driver) {
+            $this->driver = $this->instance($this->getConfig('driver'));
         }
 
-        return $this->producer_middleware;
-    }
-
-    /**
-     * @return Producer
-     * @throws ReflectionException
-     */
-    public function getProducer() : Producer
-    {
-        if (!$this->producer) {
-            $this->producer = new Producer($this->getQueueFactory(), $this->getProducerMiddleware());
-        }
-
-        return $this->producer;
-    }
-
-    /**
-     * @return MiddlewareBuilder
-     * @throws ReflectionException
-     */
-    public function getConsumerMiddleware() : MiddlewareBuilder
-    {
-        if (!$this->consumer_middleware) {
-            $middleware_configs = $this->getConfig('consumer_middlewares');
-            $this->consumer_middleware = $this->buildMiddlewareCollection($middleware_configs);
-        }
-
-        return $this->consumer_middleware;
-    }
-
-    /**
-     * @return Consumer
-     * @throws ReflectionException
-     */
-    public function getConsumer() : Consumer
-    {
-        if (!$this->consumer) {
-            $this->consumer = new Consumer($this->getRouter(), $this->getConsumerMiddleware());
-        }
-
-        return $this->consumer;
-    }
-
-    /**
-     * @return Router
-     */
-    public function getRouter() : Router
-    {
-        if (!$this->router) {
-            $this->router = new WorkerRouter($this->getConfig('routes'));
-        }
-
-        return $this->router;
+        return $this->driver;
     }
 
     /**
@@ -236,6 +170,33 @@ class ConfigLoader
     }
 
     /**
+     * @return Serializer
+     * @throws ReflectionException
+     */
+    public function getSerializer() : Serializer
+    {
+        if (!$this->serializer) {
+            $this->serializer = $this->instance($this->getConfig('serializer'));
+        }
+
+        return $this->serializer;
+    }
+
+    /**
+     * @return MiddlewareBuilder
+     * @throws ReflectionException
+     */
+    public function getProducerMiddleware() : MiddlewareBuilder
+    {
+        if (!$this->producer_middleware) {
+            $middleware_configs = $this->getConfig('producer_middlewares');
+            $this->producer_middleware = $this->buildMiddlewareCollection($middleware_configs);
+        }
+
+        return $this->producer_middleware;
+    }
+
+    /**
      * @param array $middleware_configs
      * @return MiddlewareBuilder
      * @throws ReflectionException
@@ -250,5 +211,44 @@ class ConfigLoader
         }
 
         return $middleware_collection;
+    }
+
+    /**
+     * @return Consumer
+     * @throws ReflectionException
+     */
+    public function getConsumer() : Consumer
+    {
+        if (!$this->consumer) {
+            $this->consumer = new Consumer($this->getRouter(), $this->getConsumerMiddleware());
+        }
+
+        return $this->consumer;
+    }
+
+    /**
+     * @return Router
+     */
+    public function getRouter() : Router
+    {
+        if (!$this->router) {
+            $this->router = new WorkerRouter($this->getConfig('routes'));
+        }
+
+        return $this->router;
+    }
+
+    /**
+     * @return MiddlewareBuilder
+     * @throws ReflectionException
+     */
+    public function getConsumerMiddleware() : MiddlewareBuilder
+    {
+        if (!$this->consumer_middleware) {
+            $middleware_configs = $this->getConfig('consumer_middlewares');
+            $this->consumer_middleware = $this->buildMiddlewareCollection($middleware_configs);
+        }
+
+        return $this->consumer_middleware;
     }
 }

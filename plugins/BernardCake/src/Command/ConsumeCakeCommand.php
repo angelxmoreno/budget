@@ -42,6 +42,7 @@ class ConsumeCakeCommand extends Command
             'help' => 'The Queue name',
             'choices' => $this->loader->getKnownQueues()
         ]);
+
         return $parser;
     }
 

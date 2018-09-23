@@ -23,15 +23,16 @@ trait BernardCakeMessageAware
     protected $bernard_cake_producer;
 
     /**
-     * @return ConfigLoader
+     * @param string $message_name
+     * @param array $data
+     * @param string|null $queue_name
+     * @throws \ReflectionException
      */
-    public function getBernardCakeLoader() : ConfigLoader
+    protected function pushMessage(string $message_name, array $data = [], string $queue_name = null)
     {
-        if (!$this->bernard_cake_loader) {
-            $this->bernard_cake_loader = new ConfigLoader();
-        }
-
-        return $this->bernard_cake_loader;
+        $producer = $this->getBernardCakeProducer();
+        $message = new DefaultMessage($message_name, $data);
+        $producer->produce($message, $queue_name);
     }
 
     /**
@@ -48,15 +49,14 @@ trait BernardCakeMessageAware
     }
 
     /**
-     * @param string $message_name
-     * @param array $data
-     * @param string|null $queue_name
-     * @throws \ReflectionException
+     * @return ConfigLoader
      */
-    protected function pushMessage(string $message_name, array $data = [], string $queue_name = null)
+    public function getBernardCakeLoader() : ConfigLoader
     {
-        $producer = $this->getBernardCakeProducer();
-        $message = new DefaultMessage($message_name, $data);
-        $producer->produce($message, $queue_name);
+        if (!$this->bernard_cake_loader) {
+            $this->bernard_cake_loader = new ConfigLoader();
+        }
+
+        return $this->bernard_cake_loader;
     }
 }

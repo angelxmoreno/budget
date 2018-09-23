@@ -1,7 +1,7 @@
 <?php
+
 namespace BernardCake\Test\TestCase\Command;
 
-use BernardCake\Command\ConsumeCakeCommand;
 use Cake\TestSuite\ConsoleIntegrationTestCase;
 
 /**

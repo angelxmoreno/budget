@@ -13,15 +13,6 @@ use BernardCake\Worker\WorkerInterface;
  */
 class WorkerRouter extends SimpleRouter implements Router
 {
-    /**
-     * @param  string $receiver
-     * @return boolean
-     */
-    protected function accepts($receiver)
-    {
-        return is_string($receiver) && is_a($receiver, WorkerInterface::class, true);
-    }
-
     public function map(Envelope $envelope)
     {
         $receiver = $this->get($envelope->getName());
@@ -32,5 +23,14 @@ class WorkerRouter extends SimpleRouter implements Router
         }
 
         return [$worker, 'run'];
+    }
+
+    /**
+     * @param  string $receiver
+     * @return boolean
+     */
+    protected function accepts($receiver)
+    {
+        return is_string($receiver) && is_a($receiver, WorkerInterface::class, true);
     }
 }

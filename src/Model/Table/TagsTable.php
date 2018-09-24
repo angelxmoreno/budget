@@ -55,7 +55,8 @@ class TagsTable extends TableBase
         $this->belongsToMany('Transactions', [
             'foreignKey' => 'tag_id',
             'targetForeignKey' => 'transaction_id',
-            'joinTable' => 'tags_transactions'
+            'through' => 'TagsTransactions',
+            'saveStrategy' => ORM\Association\BelongsToMany::SAVE_REPLACE
         ]);
     }
 
@@ -94,7 +95,7 @@ class TagsTable extends TableBase
      */
     public function buildRules(ORM\RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['parent_id'], 'ParentTags'));
+        $rules->add($rules->existsIn(['parent_id'], 'Tags'));
 
         return $rules;
     }

@@ -195,3 +195,5 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+
+Plugin::load('QueryFields', ['bootstrap' => false, 'routes' => true]);

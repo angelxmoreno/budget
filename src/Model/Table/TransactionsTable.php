@@ -68,7 +68,7 @@ class TransactionsTable extends TableBase
         $this->belongsToMany('Tags', [
             'foreignKey' => 'transaction_id',
             'targetForeignKey' => 'tag_id',
-            'joinTable' => 'tags_transactions',
+            'through' => 'TagsTransactions',
             'saveStrategy' => ORM\Association\BelongsToMany::SAVE_REPLACE
         ]);
     }

@@ -43,7 +43,8 @@
             "TestData\\": "./plugins/TestData/src/",
             "Auth\\": "./plugins/Auth/src/",
             "ImportCsv\\": "./plugins/ImportCsv/src/",
-            "BernardCake\\": "./plugins/BernardCake/src/"
+            "BernardCake\\": "./plugins/BernardCake/src/",
+            "QueryFields\\": "./plugins/QueryFields/src/"
         }
     },
     "autoload-dev": {
@@ -52,7 +53,8 @@
             "Cake\\Test\\": "vendor/cakephp/cakephp/tests/",
             "Auth\\Test\\": "./plugins/Auth/tests/",
             "ImportCsv\\Test\\": "./plugins/ImportCsv/tests/",
-            "BernardCake\\Test\\": "./plugins/BernardCake/tests/"
+            "BernardCake\\Test\\": "./plugins/BernardCake/tests/",
+            "QueryFields\\Test\\": "./plugins/QueryFields/tests/"
         }
     },
     "scripts": {

@@ -66,10 +66,9 @@ class TransactionsTable extends TableBase
             ]
         ]);
         $this->belongsToMany('Tags', [
-            'foreignKey' => 'transaction_id',
-            'targetForeignKey' => 'tag_id',
             'through' => 'TagsTransactions',
-            'saveStrategy' => ORM\Association\BelongsToMany::SAVE_REPLACE
+            'saveStrategy' => ORM\Association\BelongsToMany::SAVE_REPLACE,
+            'cascadeCallbacks' => true
         ]);
     }
 

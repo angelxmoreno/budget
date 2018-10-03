@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var $transaction \Axm\Budget\Model\Entity\Transaction
+ */
 $this->extend('/Base/dashboard');
 
 
@@ -97,22 +100,13 @@ $this->end();
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
-        <h3 class="panel-title"><?= h($transaction->id) ?></h3>
+        <h3 class="panel-title"><?= h($transaction->description) ?></h3>
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
-        <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= h($transaction->id) ?></td>
-        </tr>
         <tr>
             <td><?= __('Account') ?></td>
             <td><?= $transaction->has('account') ? $this->Html->link($transaction->account->name,
                     ['controller' => 'Accounts', 'action' => 'view', $transaction->account->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <td><?= __('User') ?></td>
-            <td><?= $transaction->has('user') ? $this->Html->link($transaction->user->name,
-                    ['controller' => 'Users', 'action' => 'view', $transaction->user->id]) : '' ?></td>
         </tr>
         <tr>
             <td><?= __('Type') ?></td>
@@ -130,18 +124,6 @@ $this->end();
             <td><?= __('Posted') ?></td>
             <td><?= h($transaction->posted) ?></td>
         </tr>
-        <tr>
-            <td><?= __('Created') ?></td>
-            <td><?= h($transaction->created) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Modified') ?></td>
-            <td><?= h($transaction->modified) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Description') ?></td>
-            <td><?= $this->Text->autoParagraph(h($transaction->description)); ?></td>
-        </tr>
     </table>
 </div>
 
@@ -151,46 +133,7 @@ $this->end();
         <h3 class="panel-title"><?= __('Tags') ?></h3>
     </div>
     <?php if (!empty($transaction->tags)): ?>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Name') ?></th>
-                <th><?= __('Slug') ?></th>
-                <th><?= __('Parent Id') ?></th>
-                <th><?= __('Lft') ?></th>
-                <th><?= __('Rght') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($transaction->tags as $tags): ?>
-                <tr>
-                    <td><?= h($tags->id) ?></td>
-                    <td><?= h($tags->name) ?></td>
-                    <td><?= h($tags->slug) ?></td>
-                    <td><?= h($tags->parent_id) ?></td>
-                    <td><?= h($tags->lft) ?></td>
-                    <td><?= h($tags->rght) ?></td>
-                    <td><?= h($tags->created) ?></td>
-                    <td><?= h($tags->modified) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link('', ['controller' => 'Tags', 'action' => 'view', $tags->id],
-                            ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                        <?= $this->Html->link('', ['controller' => 'Tags', 'action' => 'edit', $tags->id],
-                            ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                        <?= $this->Form->postLink('', ['controller' => 'Tags', 'action' => 'delete', $tags->id], [
-                            'confirm' => __('Are you sure you want to delete # {0}?', $tags->id),
-                            'title' => __('Delete'),
-                            'class' => 'btn btn-default glyphicon glyphicon-trash'
-                        ]) ?>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+        <?= $this->element('lists/tags', ['tags' => $transaction->tags]) ?>
     <?php else: ?>
         <p class="panel-body">no Tags</p>
     <?php endif; ?>

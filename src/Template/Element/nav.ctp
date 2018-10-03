@@ -23,6 +23,9 @@
                 <?= $this->Html->activeLiLink(__('Transactions'),
                     ['plugin' => null, 'controller' => 'Transactions', 'action' => 'index']) ?>
 
+                <?= $this->Html->activeLiLink(__('Tags'),
+                    ['plugin' => null, 'controller' => 'Tags', 'action' => 'index']) ?>
+
                 <?= $this->Html->activeLiLink(__('Import'),
                     ['plugin' => null, 'controller' => 'Import', 'action' => 'index']) ?>
 

@@ -2,7 +2,9 @@
 
 namespace Axm\Budget\Model\Table;
 
+use Axm\Budget\Model\Entity\Tag;
 use Cake\ORM;
+use Cake\Utility\Hash;
 use Cake\Validation\Validator;
 
 /**
@@ -53,10 +55,9 @@ class TagsTable extends TableBase
             'foreignKey' => 'parent_id'
         ]);
         $this->belongsToMany('Transactions', [
-            'foreignKey' => 'tag_id',
-            'targetForeignKey' => 'transaction_id',
             'through' => 'TagsTransactions',
-            'saveStrategy' => ORM\Association\BelongsToMany::SAVE_REPLACE
+            'saveStrategy' => ORM\Association\BelongsToMany::SAVE_REPLACE,
+            'cascadeCallbacks' => true
         ]);
     }
 
@@ -86,25 +87,9 @@ class TagsTable extends TableBase
         return $validator;
     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param ORM\RulesChecker $rules The rules object to be modified.
-     * @return ORM\RulesChecker
-     */
-    public function buildRules(ORM\RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['parent_id'], 'Tags'));
-
-        return $rules;
-    }
-
     public function buildTagsForUserId(array $tag_names, $user_id)
     {
-        $parent_tag = $this->findOrCreate([
-            'name' => 'Root:' . $user_id
-        ]);
+        $parent_tag = $this->getUserRootTag($user_id);
 
         $tags = [];
         foreach ($tag_names as $tag_name) {
@@ -116,5 +101,28 @@ class TagsTable extends TableBase
         array_unique($tags);
 
         return $tags;
+    }
+
+    public function findForUser(ORM\Query $query, array $options)
+    {
+        $user_id = Hash::get($options, 'user_id', null);
+        $parent_tag = $this->getUserRootTag($user_id);
+
+        $query->andWhere([
+            $this->aliasField('parent_id') => $parent_tag->id
+        ]);
+
+        return $query;
+    }
+
+    /**
+     * @param string $user_id
+     * @return Tag
+     */
+    protected function getUserRootTag(string $user_id) : Tag
+    {
+        return $this->findOrCreate([
+            'name' => 'Root:' . $user_id
+        ]);
     }
 }

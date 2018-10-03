@@ -38,7 +38,11 @@ class TagsTransactionsTable extends TableBase
         $this->setTable('tags_transactions');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
-        
+
+        $this->addBehavior('CounterCache', [
+            'Tags' => ['transactions_count']
+        ]);
+
         $this->belongsTo('Tags', [
             'foreignKey' => 'tag_id',
             'joinType' => 'INNER'
